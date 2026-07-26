@@ -23,7 +23,6 @@ Enables declarative composition of modular workflows, dynamic routing, triggerba
 
 This layer serves as the sovereign entry point for developers, enterprises, and autonomous agents. It includes the SDK Framework, Application Catalog, Microservice Registry, naturallanguage composition engine, and identity binding mechanisms.
 
-
 Rationale:
 
 Without a standard sovereign interface, decentralized development remains fragmented, non-intuitive, and non-reusable.
@@ -33,7 +32,9 @@ This layer eliminates reliance on centralized dashboards or third-party orchestr
 It ensures that every service or workflow originates with composable logic, metadata, and identity from the start—regardless of use case. 
 
 
+
 3) Infrastructure Layer
+
 Comprises decentralized Validator Nodes, Compute Nodes, and Vault-Based Storage Nodes with embedded support for token emissions, compliance tagging, and recovery logic.
 
 Delivers fault-tolerant sovereign execution of services, encrypted asset storage, and emissions-based compensation to runtime participants.
@@ -41,6 +42,7 @@ Delivers fault-tolerant sovereign execution of services, encrypted asset storage
 This layer executes modular workloads through Validator, Compute, and Storage Nodes. It includes Lockbox Emissions, Vault-Based Compliance Storage, and Self-Healing Replication Engine.
 
 Rationale:
+
 Execution must be sovereign, auditable, and survivable—not dependent on centralized runtimes.
 
 Infrastructure must provide compliance tagging, emissions-based incentives, and runtime fault recovery as native features—not through brittle integrations.
@@ -66,6 +68,7 @@ Without sovereign identity and governance, decentralized systems devolve into op
 Permissions, rewards, and lifecycle workflows must be embedded into the execution layer—not bolted on externally.
 
 This layer enables verifiable control, auditability, and participation incentives— foundational to a self-sustaining ecosystem. 
+
 
 
 5) Extensibility, Modular Enterprise Integration & Interoperability Layer
