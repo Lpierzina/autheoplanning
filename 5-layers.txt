@@ -35,6 +35,7 @@ It ensures that every service or workflow originates with composable logic, meta
 
 3) Infrastructure Layer
 Comprises decentralized Validator Nodes, Compute Nodes, and Vault-Based Storage Nodes with embedded support for token emissions, compliance tagging, and recovery logic.
+
 Delivers fault-tolerant sovereign execution of services, encrypted asset storage, and emissions-based compensation to runtime participants.
 
 This layer executes modular workloads through Validator, Compute, and Storage Nodes. It includes Lockbox Emissions, Vault-Based Compliance Storage, and Self-Healing Replication Engine.
@@ -74,12 +75,12 @@ Features runtime plug-ins, SaaS adapters, Virtual Integration Machine (VIR), cro
 Facilitates real-time integration with Web2 platforms and other blockchains, ensuring survivability and extensibility across evolving digital ecosystems.
 
 
-This outermost layer includes runtime plug-in architecture, the Virtual Integration Machine
-(VIR), SaaS connectors, Web2/Web3 bridges, and multi-chain sovereign anchoring.
+This outermost layer includes runtime plug-in architecture, the Virtual Integration Machine (VIR), SaaS connectors, Web2/Web3 bridges, and multi-chain sovereign anchoring.
 
 Rationale:
+
 Integration is not optional—it is essential for scaling decentralized systems across industries.
 
 Web2 systems and legacy SaaS tools must be extended into sovereign execution environments without compromising their architecture.
 
- This layer creates the runtime bridges needed for hybrid orchestration, long-term anchoring, and composable survivability across clouds, chains, and protocols. 
+This layer creates the runtime bridges needed for hybrid orchestration, long-term anchoring, and composable survivability across clouds, chains, and protocols. 
