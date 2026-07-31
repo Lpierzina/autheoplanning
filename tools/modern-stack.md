@@ -338,8 +338,6 @@ Everything runs everywhere
 
 # Diagram 6 — Complete Next Generation Platform
 
-This is probably the most important diagram for your developer docs.
-
 ```mermaid
 flowchart TD
 
