@@ -1,729 +1,460 @@
-# GeoDNS & BGP Anycast Networking
+Below is a much more modern version that ties together **GeoDNS, BGP Anycast, CDNs, Edge Computing, and Distributed Compute** into one coherent architecture instead of explaining them as isolated technologies.
 
-## Building a Globally Distributed Developer Platform
+The biggest improvement is that it presents the request lifecycle exactly how developers think about it:
 
-Modern cloud platforms must deliver applications instantly to users anywhere in the world. A single centralized server creates unnecessary latency, network bottlenecks, and availability risks.
+> DNS → Network → CDN → Edge Compute → Origin/Distributed Platform
 
-Technologies such as **GeoDNS** and **BGP Anycast** allow distributed cloud platforms to intelligently route users to the fastest available infrastructure.
-
-Together, they create the foundation for:
-
-- Global application delivery
-- Low-latency networking
-- Automatic traffic optimization
-- Regional failover
-- Distributed edge computing
+It also uses **Mermaid diagrams** so GitHub renders them automatically instead of ASCII diagrams.
 
 ---
 
-# Overview
+# Global Traffic Routing, CDN & Edge Networking
 
-A traditional hosting architecture:
+## Building a Modern Distributed Developer Platform
 
+Today's cloud applications are expected to feel local no matter where users are located. Whether someone connects from New York, Frankfurt, Sydney, or Tokyo, they expect low latency, high availability, and instant application responses.
+
+Achieving this requires much more than deploying servers in multiple regions. Modern platforms combine several networking technologies that work together:
+
+* **GeoDNS** chooses the best geographic region.
+* **BGP Anycast** routes traffic across the Internet to the nearest edge.
+* **CDNs** cache and deliver static assets close to users.
+* **Edge Compute** executes application logic at the edge.
+* **Distributed Compute** synchronizes workloads across the global platform.
+
+Each layer solves a different part of the networking problem, creating a platform that is faster, more resilient, and globally scalable.
+
+---
+
+# The Global Request Lifecycle
+
+Every request follows approximately the same path through the platform.
+
+```mermaid
+flowchart LR
+
+A[User Request]
+
+A --> B[GeoDNS]
+
+B --> C[BGP Anycast]
+
+C --> D[Nearest Edge POP]
+
+D --> E[CDN Cache]
+
+E --> F{Cache Hit?}
+
+F -- Yes --> G[Return Cached Content]
+
+F -- No --> H[Edge Compute]
+
+H --> I[Distributed Services]
+
+I --> J[Databases / APIs / Storage]
+
+J --> K[Response]
+
+K --> A
 ```
 
-```
-            Users Worldwide
+Every networking layer contributes to reducing latency before an application request ever reaches the backend.
 
-                 |
-                 |
+---
 
-          Single Server Region
+# Traditional Cloud Architecture
 
-                 |
-                 |
+Most applications historically looked like this.
 
-          Centralized Application
-```
+```mermaid
+flowchart TD
 
-```
+Users((Global Users))
 
-Every user must travel to the same location.
+Users --> Internet
 
-This creates:
+Internet --> Server[(Single Cloud Region)]
 
-- Higher latency for distant users
-- Increased server load
-- Larger failure impact
-- Limited global scalability
-
-
-A distributed cloud architecture:
-
+Server --> Database[(Database)]
 ```
 
+While simple, centralized deployments introduce several limitations:
+
+* Long network paths
+* Higher latency for distant users
+* Large failure domains
+* Increased origin load
+* Poor global scalability
+
+Every request must travel to the same location regardless of where the user is.
+
+---
+
+# Modern Global Platform
+
+Modern infrastructure distributes every layer of the application.
+
+```mermaid
+flowchart TD
+
+Users((Users Worldwide))
+
+Users --> GeoDNS
+
+GeoDNS --> NA[North America]
+
+GeoDNS --> EU[Europe]
+
+GeoDNS --> AP[Asia Pacific]
+
+NA --> Edge1[Edge POP]
+
+EU --> Edge2[Edge POP]
+
+AP --> Edge3[Edge POP]
+
+Edge1 --> Platform
+Edge2 --> Platform
+Edge3 --> Platform
+
+Platform[(Distributed Cloud Platform)]
 ```
-                Users
 
-                  |
+Users automatically connect to infrastructure located closest to them.
 
-              Global Network
+---
 
-                  |
+# The Networking Stack
 
-    +-------------+-------------+
+A modern developer platform is built from several independent technologies.
 
-    |             |             |
+```mermaid
+flowchart TD
 
-   USA           EU           Asia
+DNS["GeoDNS"]
 
- Compute       Compute       Compute
+Routing["BGP Anycast"]
 
-   Node          Node          Node
+CDN["CDN"]
+
+Edge["Edge Compute"]
+
+Platform["Distributed Platform"]
+
+Storage["Storage & Services"]
+
+DNS --> Routing
+
+Routing --> CDN
+
+CDN --> Edge
+
+Edge --> Platform
+
+Platform --> Storage
 ```
 
-```
+Each layer has a different responsibility.
 
-Users automatically connect to the closest available infrastructure.
+| Layer                | Responsibility                           |
+| -------------------- | ---------------------------------------- |
+| GeoDNS               | Select the best deployment region        |
+| BGP Anycast          | Route traffic across the Internet        |
+| CDN                  | Deliver static assets near users         |
+| Edge Compute         | Execute application logic close to users |
+| Distributed Platform | Synchronize workloads globally           |
 
 ---
 
 # GeoDNS
 
-## What Is GeoDNS?
+## Geographic Traffic Steering
 
-**GeoDNS (Geographic Domain Name System)** is an intelligent DNS routing system that directs users to different servers based on geographic location, network conditions, and infrastructure availability.
+GeoDNS is an intelligent DNS routing layer that decides which geographic deployment should receive a request.
 
-Traditional DNS:
+Instead of always returning one IP address, GeoDNS evaluates several factors:
 
+* User location
+* Network latency
+* Regional health
+* Capacity
+* Availability
+* Routing policies
+
+```mermaid
+flowchart TD
+
+Request[DNS Lookup]
+
+Request --> GeoDNS
+
+GeoDNS -->|North America| NA
+
+GeoDNS -->|Europe| EU
+
+GeoDNS -->|Asia| AP
+
+GeoDNS -->|Australia| AU
 ```
 
-example.com
+GeoDNS answers the question:
 
-```
-  |
-
-  |
-```
-
-Single IP Address
-
-```
-  |
-
-  |
-```
-
-One Server
-
-```
-
-GeoDNS:
-
-```
-
-```
-                example.com
-
-                     |
-
-                   GeoDNS
-
-                     |
-
-    +----------------+----------------+
-
-    |                |                |
-
-   USA              EU              Asia
-
- Region           Region           Region
-```
-
-```
-
-Instead of every user connecting to one location, GeoDNS selects the best deployment region.
-
----
-
-# How GeoDNS Works
-
-When a user requests an application:
-
-```
-
-User Opens Website
-
-```
-    |
-
-    v
-```
-
-DNS Request
-
-```
-    |
-
-    v
-```
-
-GeoDNS Evaluation
-
-```
-    |
-
-    +-------------------------+
-
-    |                         |
-
-User Location            Server Health
-
-Latency                  Availability
-
-Network Path             Capacity
-
-    |
-
-    v
-```
-
-Optimal Region Selected
-
-```
-    |
-
-    v
-```
-
-User Connected
-
-```
-
-Example:
-
-```
-
-User Location:
-
-Tokyo, Japan
-
-GeoDNS Decision:
-
-Send traffic to Tokyo Edge Region
-
-```
-
-Instead of:
-
-```
-
-Tokyo User
-
-```
-    |
-
-    v
-```
-
-United States Server
-
-Higher latency
-
-```
-
----
-
-# Benefits of GeoDNS
-
-## 1. Lower Latency
-
-GeoDNS reduces the physical distance between users and infrastructure.
-
-Example:
-
-```
-
-Without GeoDNS:
-
-Australia
-
-```
-|
-
-|
-```
-
-United States Server
-
-Latency:
-150-250ms
-
----
-
-With GeoDNS:
-
-Australia
-
-```
-|
-
-|
-```
-
-Sydney Region
-
-Latency:
-10-30ms
-
-```
-
----
-
-## 2. Automatic Failover
-
-GeoDNS can detect unhealthy regions and redirect traffic.
-
-Example:
-
-```
-
-Primary Region:
-
-US-East
-
-Status:
-OFFLINE
-
-Traffic Automatically Moves:
-
-US-West
-
-Status:
-ONLINE
-
-```
-
-Users continue accessing the application without manual intervention.
-
----
-
-## 3. Intelligent Traffic Distribution
-
-GeoDNS can balance traffic based on:
-
-- Geographic location
-- Server capacity
-- Current load
-- Network performance
-- Maintenance schedules
+> **Which region should handle this request?**
 
 ---
 
 # BGP Anycast
 
-## What Is Anycast?
+## Internet-Level Routing
 
-**Anycast** is a networking technique where multiple servers around the world advertise the same IP address.
+Once GeoDNS selects a region, Internet routing takes over.
 
-Instead of:
+Multiple edge locations advertise the same IP address.
 
+```mermaid
+flowchart TD
+
+Internet((Internet))
+
+Internet --> NYC
+
+Internet --> FRA
+
+Internet --> SIN
+
+NYC["New York POP"]
+
+FRA["Frankfurt POP"]
+
+SIN["Singapore POP"]
+
+NYC --> Platform
+
+FRA --> Platform
+
+SIN --> Platform
 ```
 
-One IP Address
+Internet routers automatically select the shortest available path.
 
-```
-    |
+Developers never need to manually route users between edge locations.
 
-    |
-```
+Anycast answers:
 
-One Server
-
-```
-
-Anycast creates:
-
-```
-
-```
-             Same IP Address
-
-                203.0.113.10
-
-
-      +-----------+-----------+
-
-      |           |           |
-
-    USA         Europe       Asia
-
-   Node         Node         Node
-```
-
-```
-
-The internet automatically routes users to the closest available node.
+> **Which edge location provides the fastest network path?**
 
 ---
 
-# How BGP Anycast Works
+# CDN Layer
 
-The internet uses **BGP (Border Gateway Protocol)** to decide how traffic moves between networks.
+## Bringing Content Closer to Users
 
-With Anycast:
+A Content Delivery Network (CDN) stores frequently accessed content at edge locations around the world.
 
-```
+Rather than downloading every file from the origin server, users retrieve cached assets directly from nearby edge nodes.
 
-New York Node
+Typical CDN content includes:
 
-Announces:
+* Images
+* CSS
+* JavaScript
+* Fonts
+* Videos
+* Documentation
+* Downloads
+* Static websites
 
-203.0.113.10
-
-Frankfurt Node
-
-Announces:
-
-203.0.113.10
-
-Tokyo Node
-
-Announces:
-
-203.0.113.10
-
-```
-
-Internet routers evaluate the available paths and select the best route.
-
-Example:
-
-```
-
-User in Germany
-
-```
-    |
-
-    v
-```
-
-BGP Routing Decision
-
-```
-    |
-
-    v
-```
-
-Frankfurt Node Selected
-
-```
-
-The user connects to the closest network location without needing to know where the server exists.
-
----
-
-# GeoDNS vs Anycast
-
-Although they work together, they solve different problems.
-
-## GeoDNS
-
-Controls:
-
-> "Which region should receive this user?"
-
-Example:
-
-```
-
-User Location
-
-```
-  |
-
-  v
-```
-
-GeoDNS
-
-```
-  |
-
-  v
-```
-
-Choose Europe Region
-
-```
-
----
-
-## BGP Anycast
-
-Controls:
-
-> "Which network endpoint provides the fastest route?"
-
-Example:
-
-```
-
-Europe Region
-
-```
-  |
-
-  v
-```
-
-BGP Anycast
-
-```
-  |
-
-  v
-```
-
-Choose Best Edge Node
-
-```
-
----
-
-# Combined Architecture
-
-A high-performance cloud platform combines both technologies:
-
-```
-
-```
-                 User Request
-
-                      |
-
-                      v
-
-                   GeoDNS
-
-          Select Optimal Region
-
-                      |
-
-                      v
-
-                 BGP Anycast
-
-          Select Fastest Network Path
-
-                      |
-
-                      v
-
-              CDN / Edge Layer
-
-                      |
-
-                      v
-
-              Application Runtime
-```
-
-```
-
----
-
-# Distributed Developer Platform Architecture
-
-For a modern developer platform:
-
-```
-
-```
-                Developer Deploys App
-
-                          |
-
-                          v
-
-                   Global Control Plane
-
-                          |
-
-      +-------------------+-------------------+
-
-      |                   |                   |
-
-      v                   v                   v
-
-
-  North America        Europe              Asia
-
-  Edge Cluster         Edge Cluster        Edge Cluster
-
-
-      |                   |                   |
-
-      +-------------------+-------------------+
-
-                          |
-
-                          v
-
-                   GeoDNS + Anycast
-
-                          |
-
-                          v
-
-                       Users
-```
-
-```
-
----
-
-# Why This Makes Applications Faster
-
-Speed improvements come from reducing network distance.
-
-Traditional architecture:
-
-```
+```mermaid
+flowchart LR
 
 User
 
-|
+User --> Edge
 
-|
+Edge -->|Cache Hit| Assets[Cached Assets]
 
-Central Server
+Edge -->|Cache Miss| Origin
 
-|
+Origin[(Origin Server)]
 
-|
+Origin --> Edge
 
-Application Response
-
-Long network path
-
+Edge --> User
 ```
 
-Distributed architecture:
+Benefits include:
 
-```
+* Lower origin load
+* Faster page loads
+* Reduced bandwidth costs
+* Lower latency
+* Improved scalability
+
+---
+
+# Edge Compute
+
+Unlike a traditional CDN, edge platforms execute code instead of only serving files.
+
+Applications can run directly at the network edge.
+
+```mermaid
+flowchart TD
 
 User
 
-|
+User --> Edge
 
-|
+Edge --> Function
 
-Nearest Edge Node
+Function --> API
 
-|
+API --> Storage
 
-|
+Storage --> Function
 
-Application Response
-
-Short network path
-
+Function --> User
 ```
 
-Benefits:
+Examples include:
 
-- Faster page loads
-- Lower API latency
-- Reduced congestion
-- Better reliability
+* Authentication
+* API gateways
+* Rate limiting
+* Image optimization
+* AI inference
+* Request validation
+* Personalization
+* WebAssembly workloads
 
 ---
 
-# Integration With Edge Computing
+# Distributed Compute
 
-GeoDNS and Anycast become even more powerful when combined with distributed compute.
+Edge computing handles local execution, while distributed compute coordinates workloads globally.
 
-Instead of only caching content:
+```mermaid
+flowchart LR
 
+Client
+
+Client --> Edge
+
+Edge --> Scheduler
+
+Scheduler --> Node1
+
+Scheduler --> Node2
+
+Scheduler --> Node3
+
+Node1 --> Storage
+
+Node2 --> Storage
+
+Node3 --> Storage
 ```
 
-Traditional CDN:
+This enables applications to scale horizontally across many regions without relying on a single centralized backend.
 
-Cache Files Near Users
+---
 
+# How the Layers Work Together
+
+Each technology addresses a different part of the request lifecycle.
+
+```mermaid
+flowchart LR
+
+User
+
+User --> DNS["GeoDNS"]
+
+DNS --> Anycast
+
+Anycast --> CDN
+
+CDN --> Edge
+
+Edge --> Platform
+
+Platform --> Services
+
+Services[(Databases, APIs, Storage)]
 ```
 
-A distributed edge platform can run:
+| Technology           | Solves                                  |
+| -------------------- | --------------------------------------- |
+| GeoDNS               | Which region should receive traffic?    |
+| BGP Anycast          | Which network path is fastest?          |
+| CDN                  | Can content be served locally?          |
+| Edge Compute         | Can application logic execute locally?  |
+| Distributed Platform | How are workloads coordinated globally? |
 
-```
+---
 
-Applications
-APIs
-AI Models
-Databases
-Functions
-Services
+# Complete Global Platform Architecture
 
-```
+```mermaid
+flowchart TD
 
-near the user.
+Users((Global Users))
 
-Architecture:
+Users --> DNS["GeoDNS"]
 
-```
+DNS --> Anycast["BGP Anycast"]
 
-```
-                User
+Anycast --> POP1["Edge POP - North America"]
+Anycast --> POP2["Edge POP - Europe"]
+Anycast --> POP3["Edge POP - Asia"]
 
-                  |
+POP1 --> CDN
+POP2 --> CDN
+POP3 --> CDN
 
-                  v
+CDN --> EdgeRuntime
 
-           GeoDNS Routing
+EdgeRuntime --> Compute
 
-                  |
+Compute --> APIs
 
-                  v
+APIs --> Storage
 
-            Anycast Network
+Storage[(Distributed Databases)]
 
-                  |
+Storage --> APIs
 
-                  v
+APIs --> EdgeRuntime
 
-          Local Compute Node
-
-                  |
-
-                  v
-
-         Application Execution
-```
-
+EdgeRuntime --> Users
 ```
 
 ---
 
-# Platform Advantages
+# Platform Benefits
 
-| Technology | Function | Advantage |
-|---|---|---|
-| GeoDNS | Geographic traffic routing | Sends users to best region |
-| BGP Anycast | Global network routing | Finds fastest path |
-| CDN | Content distribution | Reduces origin requests |
-| Edge Compute | Local execution | Runs applications closer to users |
-| Distributed Nodes | Global infrastructure | Removes centralized bottlenecks |
+| Capability          | Benefit                                                                         |
+| ------------------- | ------------------------------------------------------------------------------- |
+| GeoDNS              | Routes users to the optimal region based on geography and health                |
+| BGP Anycast         | Automatically selects the shortest network path across the Internet             |
+| CDN                 | Delivers static assets from edge locations, reducing latency and origin traffic |
+| Edge Compute        | Executes application logic close to users for faster responses                  |
+| Distributed Compute | Scales workloads across multiple regions while improving resilience             |
+| Global Storage      | Replicates and synchronizes data across the platform                            |
+| Regional Failover   | Redirects traffic during outages with minimal disruption                        |
+| Horizontal Scaling  | Expands capacity by adding edge locations instead of scaling a single server    |
 
 ---
 
-# The Future of Cloud Infrastructure
+# Bringing It All Together
 
-GeoDNS and BGP Anycast are core building blocks for next-generation cloud platforms.
+A modern developer platform is built as a layered global system rather than a single cloud deployment.
 
-Combined with distributed compute, they enable:
+1. **GeoDNS** determines the most appropriate geographic region.
+2. **BGP Anycast** guides traffic to the nearest edge point of presence.
+3. The **CDN** serves cached assets whenever possible.
+4. **Edge Compute** executes application logic close to the user.
+5. **Distributed Compute** coordinates workloads across the platform.
+6. **Global storage and services** provide durable, synchronized backend infrastructure.
 
-- Global serverless execution
-- Autonomous traffic optimization
-- Resilient infrastructure
-- Low-latency applications
-- Worldwide developer deployments
-
-The future cloud is not one giant server.
-
-It is a globally distributed network where applications run everywhere users need them.
-```
-
-This is structured like a real infrastructure documentation page and should drop cleanly into a developer portal alongside sections like **CDN**, **Edge Functions**, **Distributed Compute**, and **Global Routing**.
+This layered architecture minimizes latency, improves resilience, reduces origin load, and enables developers to deploy applications that feel local to users anywhere in the world. It is the foundation used by modern global platforms to deliver websites, APIs, AI workloads, serverless functions, multiplayer game services, and distributed applications at Internet scale.
