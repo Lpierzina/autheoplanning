@@ -326,8 +326,6 @@ even though the servers themselves may still be running.
 
 # Diagram 7 — The Modern Service Dependency Graph
 
-This starts looking like the giant "Internet map" you're ultimately after.
-
 ```mermaid
 flowchart TD
 
@@ -464,12 +462,3 @@ In reality, some of the most critical dependencies are:
 * Tier 1 transit providers
 
 Those are often the true foundational layers beneath everything else.
-
-If I were building an "Ultimate Internet Diagram," I'd keep expanding from these four major domains:
-
-1. **Physical Infrastructure** (power, fiber, submarine cables, data centers)
-2. **Global Connectivity** (Tier 1s, IXPs, BGP, DNS)
-3. **Cloud & Edge** (Cloudflare, Akamai, AWS, Azure, GCP)
-4. **Applications & Platforms** (GitHub, OpenAI, Netflix, Shopify, Discord, etc.)
-
-Eventually those can all be merged into a single massive Mermaid diagram showing the dependency chain from a user clicking a website all the way down to power plants and submarine cable repair vessels.
