@@ -1178,3 +1178,491 @@ Long-Haul Network Operator
 ```
 
 
+
+
+This is where the Internet gets messy because the "Tier 1 / Tier 2 / Tier 3" model was mostly a North American simplification from the 1990s-2000s. Today many networks are hybrid.
+
+A better way to think about these companies is:
+
+| Type                    | Role                                                               |
+| ----------------------- | ------------------------------------------------------------------ |
+| Tier 1                  | Global backbone, no paid transit needed                            |
+| Global Tier 2           | Large regional/global carrier, buys some transit and peers heavily |
+| National Carrier        | Dominates a country or region                                      |
+| Access ISP              | Last-mile connectivity                                             |
+| Mobile Operator         | Cellular access network                                            |
+| Infrastructure Provider | Towers, fiber, subsea cables                                       |
+| Content Network         | CDN, hyperscaler, large content provider                           |
+
+---
+
+# Where Your Listed Companies Fit
+
+## Telefónica
+
+Spain / Europe / Latin America
+
+Owns:
+
+* Movistar
+* O2 UK
+* Various LATAM operations
+
+Classification:
+
+```text
+Large International Carrier
+Major Mobile Operator
+Tier 2-ish Global Network
+```
+
+Not a true Tier 1 backbone today.
+
+More like:
+
+```text
+Regional/National Networks
+      ↓
+Telefónica
+      ↓
+Global Transit & Peering
+```
+
+---
+
+## Frontier
+
+US
+
+Classification:
+
+```text
+Tier 3 Access ISP
+Regional Fiber Provider
+```
+
+Provides:
+
+* Residential fiber
+* Business fiber
+
+Generally purchases upstream connectivity.
+
+---
+
+## China Mobile
+
+This one is huge.
+
+Classification:
+
+```text
+National Carrier
+Global Backbone Operator
+Mobile Operator
+Near Tier-1 Scale
+```
+
+Largest mobile carrier on Earth.
+
+Owns:
+
+* Massive domestic backbone
+* International subsea investments
+* Global PoPs
+
+China Mobile is closer to a global carrier than a traditional ISP.
+
+---
+
+## China Telecom
+
+Classification:
+
+```text
+National Carrier
+International Backbone
+Tier 2/Global Carrier
+```
+
+Major international presence.
+
+Has:
+
+* Subsea cable ownership
+* International transit
+* IX presence worldwide
+
+---
+
+## China Unicom
+
+Classification:
+
+```text
+National Carrier
+Global Carrier
+```
+
+Another major Chinese backbone.
+
+---
+
+## stc Group (Saudi Telecom Company)
+
+Classification:
+
+```text
+National Telecom
+Regional Backbone
+Middle East Carrier
+```
+
+Increasingly important because of:
+
+* Red Sea cable routes
+* Middle East interconnection
+* Regional cloud investments
+
+---
+
+## MTN Group
+
+Africa
+
+Classification:
+
+```text
+Mobile Operator
+Regional Carrier
+```
+
+One of Africa's most important telecom operators.
+
+Operates across:
+
+* Nigeria
+* South Africa
+* Ghana
+* Uganda
+* Many others
+
+---
+
+## WIOCC
+
+This one is very interesting.
+
+Classification:
+
+```text
+Pan-African Backbone Provider
+Wholesale Carrier
+Infrastructure Operator
+```
+
+WIOCC is basically:
+
+```text
+Africa's Interconnection Layer
+```
+
+They operate:
+
+* Fiber
+* Subsea capacity
+* Carrier interconnects
+
+Not typically customer-facing.
+
+---
+
+# Players Missing By Region
+
+## North America
+
+Major carriers:
+
+```text
+AT&T
+Verizon
+Lumen
+Cogent
+Zayo
+Comcast
+Charter
+T-Mobile
+US Cellular
+Frontier
+```
+
+---
+
+## Europe
+
+```text
+Arelion
+BT
+Vodafone
+Orange
+Telefónica
+Deutsche Telekom
+Swisscom
+Telia
+Colt
+```
+
+Arelion is especially important.
+
+Formerly:
+
+```text
+Telia Carrier
+```
+
+One of the largest backbone networks globally.
+
+---
+
+## Middle East
+
+```text
+stc
+e&
+Ooredoo
+Zain
+du
+Omantel
+```
+
+---
+
+## Africa
+
+```text
+WIOCC
+MTN
+Liquid Intelligent Technologies
+Safaricom
+Orange Africa
+Vodacom
+```
+
+Liquid is another huge one you're missing.
+
+---
+
+## Asia
+
+```text
+China Mobile
+China Telecom
+China Unicom
+NTT
+SoftBank
+KDDI
+Singtel
+Airtel
+Jio
+KT
+SK Telecom
+```
+
+NTT remains one of the largest global networks.
+
+---
+
+# Major Global Transit Networks
+
+If I were making a backbone section, I'd separate these:
+
+```text
+Lumen
+Cogent
+Arelion
+NTT
+Tata Communications
+GTT
+PCCW Global
+Sparkle
+Telia
+Zayo
+```
+
+These companies move enormous portions of Internet traffic.
+
+---
+
+# The IXP Layer You're Missing
+
+Your current map has carriers but not enough exchanges.
+
+Think of IXPs as:
+
+```text
+Internet Airports
+```
+
+Networks meet here.
+
+---
+
+## Global Mega IXPs
+
+```text
+DE-CIX Frankfurt
+AMS-IX Amsterdam
+LINX London
+Equinix Internet Exchange
+```
+
+These are among the most important places on Earth for Internet traffic.
+
+Diagram:
+
+```mermaid
+flowchart TD
+
+Cloudflare
+
+Google
+
+Meta
+
+AWS
+
+Netflix
+
+Vodafone
+
+Arelion
+
+DE-CIX
+
+Cloudflare --> DE-CIX
+Google --> DE-CIX
+Meta --> DE-CIX
+AWS --> DE-CIX
+Netflix --> DE-CIX
+Vodafone --> DE-CIX
+Arelion --> DE-CIX
+```
+
+---
+
+## Regional IXPs
+
+### North America
+
+```text
+Any2
+NYIIX
+SIX
+Equinix IX
+```
+
+### Europe
+
+```text
+DE-CIX
+AMS-IX
+LINX
+France-IX
+MIX
+```
+
+### Africa
+
+```text
+NAPAfrica
+KIXP
+JINX
+RINEX
+```
+
+### Asia
+
+```text
+HKIX
+JPIX
+SGIX
+MyIX
+```
+
+### Middle East
+
+```text
+UAE-IX
+SAIX
+QIXP
+```
+
+---
+
+# The Missing Subsea Cable Operators
+
+Another section worth adding:
+
+```text
+Google
+Meta
+Microsoft
+Amazon
+Orange Marine
+ASN
+SubCom
+Alcatel Submarine Networks
+NEC
+PCCW
+China Telecom
+China Mobile
+```
+
+These companies own or build the physical links between continents.
+
+---
+
+# What the "Internet Core" Really Looks Like
+
+If you zoom into the center of your diagram, the most connected entities are probably:
+
+```text
+Arelion
+NTT
+Lumen
+Cogent
+Tata
+Cloudflare
+Google
+AWS
+Microsoft
+Meta
+Equinix
+DE-CIX
+AMS-IX
+LINX
+```
+
+Those nodes sit near the center of the modern Internet graph because they connect to enormous numbers of other networks.
+
+One useful expansion would be creating a dedicated **"Global Connectivity Core"** section in the middle of your diagram:
+
+```text
+Access Networks
+     ↓
+National Carriers
+     ↓
+Regional Carriers
+     ↓
+Global Backbones
+     ↓
+IXPs
+     ↓
+Cloud / CDN / Content Networks
+     ↓
+Applications
+```
+
+That would help visually separate *who provides access* (Frontier, Comcast, MTN, Jio) from *who provides global connectivity* (Arelion, NTT, Tata, Lumen, Cogent) and *where they actually interconnect* (DE-CIX, AMS-IX, LINX, Equinix IX, NAPAfrica, SGIX).
+
+
