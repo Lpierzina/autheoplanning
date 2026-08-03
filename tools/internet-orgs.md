@@ -406,3 +406,775 @@ Private Peering Platform
 Operates exchange fabrics across many Equinix facilities.
 
 ---
+
+
+
+Yes — and this is one of the most important realizations when mapping the Internet.
+
+The fiber used by:
+
+* Cellular networks
+* ISPs
+* Cloud providers
+* CDNs
+* Governments
+* Enterprises
+* Satellite ground stations
+
+is often the exact same physical fiber infrastructure.
+
+People imagine separate networks:
+
+```text
+Mobile Network
+Internet Network
+Cloud Network
+Satellite Network
+```
+
+Reality is closer to:
+
+```text
+                Fiber Infrastructure
+
+                        |
+
+    +---------+---------+---------+---------+
+
+    |         |         |         |         |
+
+ Cellular    ISP      Cloud      CDN    Satellite
+
+ Networks   Access   Providers  Networks  Ground Stations
+```
+
+A Verizon cell tower might use fiber from:
+
+* Zayo
+* Lumen
+* Crown Castle Fiber
+* AT&T
+* Local fiber providers
+
+A Starlink ground station may connect into:
+
+* Equinix
+* Zayo
+* Lumen
+* Arelion
+
+An AWS region may connect into:
+
+* Arelion
+* NTT
+* Lumen
+* Tata
+
+Everyone is sharing pieces of the same global physical infrastructure.
+
+---
+
+# NORTH AMERICA
+
+## AT&T
+
+Classification:
+
+```text
+National Carrier
+Mobile Operator
+Fiber Provider
+Global Network Operator
+```
+
+One of the largest US telecommunications networks with extensive fiber, wireless, enterprise, and international infrastructure.
+
+---
+
+## Verizon
+
+Classification:
+
+```text
+National Carrier
+Mobile Operator
+Fiber Provider
+Enterprise Network Operator
+```
+
+Operates one of the world's largest mobile networks and extensive enterprise connectivity services.
+
+---
+
+## Lumen
+
+Classification:
+
+```text
+Global Backbone Provider
+Tier 1 Network
+Transit Carrier
+Fiber Infrastructure Operator
+```
+
+One of the largest long-haul fiber and Internet backbone operators in the world.
+
+---
+
+## Cogent
+
+Classification:
+
+```text
+Tier 1 Network
+Transit Provider
+Internet Backbone Operator
+```
+
+Major global transit network carrying enormous amounts of Internet traffic.
+
+---
+
+## Zayo
+
+Classification:
+
+```text
+Fiber Infrastructure Provider
+Wholesale Carrier
+Backbone Operator
+```
+
+Owns extensive metro and long-haul fiber infrastructure throughout North America and Europe.
+
+---
+
+## Comcast
+
+Classification:
+
+```text
+Cable Operator
+Residential ISP
+Enterprise Network Operator
+Content Network
+```
+
+One of the largest broadband providers in North America.
+
+---
+
+## Charter
+
+Classification:
+
+```text
+Cable Operator
+Residential ISP
+Regional Carrier
+```
+
+Large US broadband provider operating under the Spectrum brand.
+
+---
+
+## T-Mobile
+
+Classification:
+
+```text
+Mobile Operator
+National Carrier
+5G Infrastructure Provider
+```
+
+Major US wireless network operator.
+
+---
+
+## US Cellular
+
+Classification:
+
+```text
+Regional Mobile Operator
+Wireless Carrier
+```
+
+Regional cellular provider focused on underserved markets.
+
+---
+
+## Frontier
+
+Classification:
+
+```text
+Residential Fiber Provider
+Regional ISP
+Enterprise Connectivity Provider
+```
+
+Primarily focused on broadband and fiber access.
+
+---
+
+# EUROPE
+
+## Arelion
+
+Classification:
+
+```text
+Tier 1 Network
+Global Backbone Provider
+Transit Carrier
+```
+
+Formerly Telia Carrier. One of the largest global Internet backbone operators.
+
+---
+
+## BT
+
+Classification:
+
+```text
+National Carrier
+International Telecom Operator
+Enterprise Connectivity Provider
+```
+
+Major UK telecom and global enterprise network provider.
+
+---
+
+## Vodafone
+
+Classification:
+
+```text
+Mobile Operator
+International Carrier
+Enterprise Connectivity Provider
+```
+
+One of the world's largest multinational telecom operators.
+
+---
+
+## Orange
+
+Classification:
+
+```text
+National Carrier
+International Telecom Operator
+Subsea Cable Investor
+```
+
+Large European and African telecommunications provider.
+
+---
+
+## Telefónica
+
+Classification:
+
+```text
+International Telecom Operator
+Mobile Operator
+Regional Backbone Provider
+```
+
+Major operator across Europe and Latin America.
+
+---
+
+## Deutsche Telekom
+
+Classification:
+
+```text
+National Carrier
+Mobile Operator
+International Backbone Operator
+```
+
+Germany's dominant telecom provider and owner of T-Mobile.
+
+---
+
+## Swisscom
+
+Classification:
+
+```text
+National Carrier
+Mobile Operator
+Enterprise Network Provider
+```
+
+Switzerland's primary telecommunications provider.
+
+---
+
+## Telia
+
+Classification:
+
+```text
+Regional Telecom Operator
+Nordic Carrier
+Enterprise Connectivity Provider
+```
+
+Major telecommunications provider throughout Northern Europe.
+
+---
+
+## Colt
+
+Classification:
+
+```text
+Enterprise Fiber Operator
+Wholesale Carrier
+Data Center Interconnection Provider
+```
+
+Known for high-capacity enterprise and data-center networking.
+
+---
+
+# MIDDLE EAST
+
+## stc Group
+
+Classification:
+
+```text
+National Carrier
+Regional Backbone Provider
+Mobile Operator
+Subsea Cable Investor
+```
+
+Saudi Arabia's largest telecom company.
+
+---
+
+## e& (Etisalat)
+
+Classification:
+
+```text
+International Telecom Operator
+Mobile Operator
+Regional Connectivity Provider
+```
+
+One of the Middle East's largest telecom groups.
+
+---
+
+## Ooredoo
+
+Classification:
+
+```text
+Mobile Operator
+Regional Telecom Provider
+International Carrier
+```
+
+Major operator throughout the Middle East and Asia.
+
+---
+
+## Zain
+
+Classification:
+
+```text
+Mobile Operator
+Regional Carrier
+Digital Services Provider
+```
+
+Large multi-country operator in the Middle East and Africa.
+
+---
+
+## du
+
+Classification:
+
+```text
+National Carrier
+Mobile Operator
+Enterprise Connectivity Provider
+```
+
+One of the UAE's major telecom providers.
+
+---
+
+## Omantel
+
+Classification:
+
+```text
+National Carrier
+Subsea Cable Landing Operator
+International Carrier
+```
+
+Important because Oman sits on major intercontinental cable routes.
+
+---
+
+# AFRICA
+
+## WIOCC
+
+Classification:
+
+```text
+Pan-African Backbone Provider
+Wholesale Carrier
+Infrastructure Operator
+```
+
+One of Africa's most important wholesale connectivity providers.
+
+---
+
+## MTN Group
+
+Classification:
+
+```text
+Mobile Operator
+Regional Carrier
+Digital Services Provider
+```
+
+Largest telecommunications group across much of Africa.
+
+---
+
+## Liquid Intelligent Technologies
+
+Classification:
+
+```text
+Pan-African Fiber Operator
+Backbone Provider
+Enterprise Connectivity Provider
+```
+
+Owns one of Africa's largest terrestrial fiber networks.
+
+---
+
+## Safaricom
+
+Classification:
+
+```text
+Mobile Operator
+National Carrier
+Digital Services Provider
+```
+
+Kenya's dominant telecommunications provider.
+
+---
+
+## Orange Africa
+
+Classification:
+
+```text
+Regional Telecom Operator
+Mobile Operator
+Infrastructure Investor
+```
+
+Orange's extensive African operations.
+
+---
+
+## Vodacom
+
+Classification:
+
+```text
+Mobile Operator
+Regional Carrier
+Enterprise Connectivity Provider
+```
+
+Major operator throughout Southern Africa.
+
+---
+
+## Telecom Egypt
+
+Classification:
+
+```text
+National Carrier
+Subsea Cable Landing Operator
+International Transit Provider
+```
+
+Extremely important globally because many Europe–Asia–Africa cable systems pass through Egypt.
+
+---
+
+# ASIA
+
+## China Mobile
+
+Classification:
+
+```text
+National Carrier
+Global Backbone Operator
+Mobile Operator
+Subsea Cable Investor
+```
+
+Largest mobile network operator in the world.
+
+---
+
+## China Telecom
+
+Classification:
+
+```text
+National Carrier
+International Carrier
+Backbone Operator
+```
+
+Major international connectivity provider.
+
+---
+
+## China Unicom
+
+Classification:
+
+```text
+National Carrier
+International Carrier
+Global Network Operator
+```
+
+One of China's three major telecom operators.
+
+---
+
+## NTT
+
+Classification:
+
+```text
+Tier 1 Network
+Global Backbone Provider
+Data Center Operator
+```
+
+One of the largest Internet backbone operators globally.
+
+---
+
+## SoftBank
+
+Classification:
+
+```text
+Mobile Operator
+National Carrier
+International Telecom Investor
+```
+
+Major Japanese telecom and infrastructure operator.
+
+---
+
+## KDDI
+
+Classification:
+
+```text
+National Carrier
+International Carrier
+Subsea Cable Investor
+```
+
+One of Japan's largest telecom providers.
+
+---
+
+## Singtel
+
+Classification:
+
+```text
+Regional Carrier
+Mobile Operator
+International Connectivity Provider
+```
+
+One of Southeast Asia's most important telecom companies.
+
+---
+
+## Airtel
+
+Classification:
+
+```text
+Mobile Operator
+Regional Carrier
+International Connectivity Provider
+```
+
+One of the largest operators in India and Africa.
+
+---
+
+## Jio
+
+Classification:
+
+```text
+Mobile Operator
+National Carrier
+Digital Platform Provider
+```
+
+India's largest mobile network.
+
+---
+
+## KT
+
+Classification:
+
+```text
+National Carrier
+Mobile Operator
+International Connectivity Provider
+```
+
+One of South Korea's primary telecom operators.
+
+---
+
+## SK Telecom
+
+Classification:
+
+```text
+Mobile Operator
+National Carrier
+5G Infrastructure Provider
+```
+
+South Korea's largest wireless provider.
+
+---
+
+# GLOBAL BACKBONE / TRANSIT PLAYERS
+
+These are the companies that sit closest to the "core" of the Internet.
+
+## Lumen
+
+```text
+Tier 1 Network
+Global Backbone Provider
+Fiber Infrastructure Operator
+```
+
+## Cogent
+
+```text
+Tier 1 Network
+Transit Provider
+Global Backbone Operator
+```
+
+## Arelion
+
+```text
+Tier 1 Network
+Global Backbone Provider
+Transit Carrier
+```
+
+## NTT
+
+```text
+Tier 1 Network
+Global Backbone Provider
+Data Center Operator
+```
+
+## Tata Communications
+
+```text
+Global Backbone Provider
+International Carrier
+Subsea Cable Operator
+```
+
+## GTT
+
+```text
+Global Transit Provider
+Backbone Operator
+Enterprise Carrier
+```
+
+## PCCW Global
+
+```text
+International Carrier
+Asian Backbone Provider
+Subsea Cable Investor
+```
+
+## Sparkle
+
+```text
+Global Carrier
+Mediterranean Backbone Operator
+Subsea Cable Operator
+```
+
+(Owned by Telecom Italia.)
+
+## Telia
+
+```text
+Regional Carrier
+International Connectivity Provider
+Enterprise Network Operator
+```
+
+## Zayo
+
+```text
+Fiber Infrastructure Provider
+Wholesale Carrier
+Long-Haul Network Operator
+```
+
+
