@@ -1,4 +1,5 @@
-I think you're heading toward something much larger than an Internet map—you're really building a **Global Digital Infrastructure Dependency Graph**. If done well, it answers questions like:
+ **Global Digital Infrastructure Dependency Graph**.
+ answers questions like:
 
 * *What keeps the Internet running?*
 * *What companies would cause cascading failures if they disappeared?*
