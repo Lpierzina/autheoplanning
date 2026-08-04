@@ -809,4 +809,752 @@ Nokia --> Internet
 Cloud --> Internet
 ```
 
+
+
+ The **Internet service layer** looks huge because we use it every day, but once you start mapping the hardware and semiconductor side, you discover the dependency graph is actually much deeper and often more concentrated.
+
+For example:
+
+```text
+GitHub
+  ↓
+Azure
+  ↓
+Servers
+  ↓
+CPUs
+  ↓
+TSMC
+  ↓
+ASML
+  ↓
+Zeiss
+```
+
+A surprising amount of the world's digital economy eventually traces back to a handful of companies.
+
+---
+
+# EDA (Electronic Design Automation)
+
+These companies build the software used to design chips.
+
+Without them:
+
+```text
+No chip designs
+
+↓
+
+No CPUs
+
+↓
+
+No GPUs
+
+↓
+
+No Internet
+```
+
+---
+
+## Cadence
+
+Classification:
+
+```text
+EDA Software Provider
+Chip Design Platform
+Semiconductor Engineering Software
+```
+
+Produces:
+
+* Chip design software
+* PCB design tools
+* Verification systems
+
+Used by:
+
+```text
+NVIDIA
+AMD
+Intel
+Apple
+Qualcomm
+Broadcom
+Marvell
+```
+
+Cadence is one of the three companies that effectively make modern chip design possible.
+
+---
+
+## Synopsys
+
+Classification:
+
+```text
+EDA Software Provider
+Semiconductor IP Provider
+Chip Verification Platform
+```
+
+Produces:
+
+* Design tools
+* Verification tools
+* Semiconductor IP blocks
+
+Used by virtually every major chip company.
+
+Many modern chips contain Synopsys IP.
+
+---
+
+## Siemens EDA
+
+Classification:
+
+```text
+EDA Software Provider
+Electronic Engineering Platform
+Verification Technology Provider
+```
+
+Formerly:
+
+```text
+Mentor Graphics
+```
+
+Provides:
+
+* Simulation
+* PCB design
+* Verification
+
+Third member of the "EDA Big Three".
+
+---
+
+# Semiconductor Packaging
+
+These companies take finished wafers and turn them into usable chips.
+
+---
+
+## ASE Technology
+
+Classification:
+
+```text
+Semiconductor Packaging Provider
+Chip Assembly Company
+Advanced Packaging Leader
+```
+
+Produces:
+
+* Chip packaging
+* Chip testing
+* Advanced chiplet packaging
+
+One of the largest semiconductor packaging companies in the world.
+
+Without ASE:
+
+```text
+TSMC wafers
+
+↓
+
+Cannot become usable processors
+```
+
+---
+
+## Amkor
+
+Classification:
+
+```text
+Semiconductor Packaging Provider
+Chip Testing Company
+Advanced Packaging Supplier
+```
+
+Major supplier to:
+
+```text
+Apple
+Qualcomm
+AMD
+NVIDIA
+```
+
+One of the most important companies most people have never heard of.
+
+---
+
+# Semiconductor Materials
+
+---
+
+## Shin-Etsu
+
+Classification:
+
+```text
+Silicon Wafer Manufacturer
+Semiconductor Materials Supplier
+```
+
+Produces:
+
+* Silicon wafers
+
+Used by:
+
+```text
+TSMC
+Samsung
+Intel
+```
+
+---
+
+## SUMCO
+
+Classification:
+
+```text
+Silicon Wafer Manufacturer
+Semiconductor Materials Supplier
+```
+
+One of the world's largest wafer suppliers.
+
+---
+
+## GlobalWafers
+
+Classification:
+
+```text
+Semiconductor Wafer Manufacturer
+Silicon Materials Supplier
+```
+
+Critical upstream supplier.
+
+---
+
+# Chip Designers
+
+---
+
+## Apple
+
+Classification:
+
+```text
+Consumer Electronics Company
+Chip Designer
+Platform Provider
+```
+
+Produces:
+
+* M-series processors
+* A-series processors
+
+Depends on:
+
+```text
+TSMC
+ARM
+Cadence
+Synopsys
+ASE
+Amkor
+```
+
+Apple designs some of the world's most advanced processors but manufactures none of them.
+
+---
+
+## NVIDIA
+
+Classification:
+
+```text
+GPU Designer
+AI Infrastructure Provider
+Networking Company
+```
+
+Produces:
+
+* H100
+* B100
+* AI accelerators
+* Mellanox networking
+
+Depends heavily on:
+
+```text
+TSMC
+ASE
+Cadence
+Synopsys
+```
+
+---
+
+## Broadcom
+
+Classification:
+
+```text
+Infrastructure Semiconductor Company
+Networking Silicon Provider
+```
+
+Produces chips used in:
+
+```text
+Routers
+Switches
+Storage systems
+WiFi
+Fiber infrastructure
+```
+
+Many Internet routers contain Broadcom silicon.
+
+---
+
+## Marvell
+
+Classification:
+
+```text
+Infrastructure Semiconductor Company
+Networking Silicon Provider
+```
+
+Produces:
+
+* Ethernet chips
+* Optical networking silicon
+* Data center processors
+
+Extremely important in modern cloud infrastructure.
+
+---
+
+## MediaTek
+
+Classification:
+
+```text
+Mobile Chip Designer
+Consumer Semiconductor Provider
+```
+
+Powers huge numbers of phones and IoT devices globally.
+
+---
+
+# IBM
+
+IBM deserves its own category.
+
+---
+
+## IBM
+
+Classification:
+
+```text
+Enterprise Technology Company
+Research Organization
+Semiconductor Innovator
+```
+
+Produces:
+
+* Mainframes
+* Enterprise software
+* Research technologies
+
+Important contributions:
+
+```text
+FinFET research
+Chip manufacturing advances
+AI systems
+Quantum computing
+```
+
+IBM is less important as a chip manufacturer today but remains hugely important as a research and standards organization.
+
+---
+
+# Memory Manufacturers
+
+Without memory, no server works.
+
+---
+
+## Samsung Memory
+
+Classification:
+
+```text
+Memory Manufacturer
+DRAM Provider
+Flash Storage Provider
+```
+
+Largest memory producer in the world.
+
+---
+
+## SK Hynix
+
+Classification:
+
+```text
+Memory Manufacturer
+HBM Supplier
+AI Memory Provider
+```
+
+Critical supplier for AI GPUs.
+
+---
+
+## Micron
+
+Classification:
+
+```text
+Memory Manufacturer
+Storage Technology Provider
+```
+
+Major US memory producer.
+
+---
+
+# Storage Infrastructure
+
+---
+
+## Western Digital
+
+Classification:
+
+```text
+Storage Manufacturer
+Data Infrastructure Provider
+```
+
+Produces:
+
+* HDDs
+* SSDs
+* Enterprise storage
+
+---
+
+## Seagate
+
+Classification:
+
+```text
+Storage Manufacturer
+Enterprise Data Infrastructure Provider
+```
+
+One of the largest hard drive manufacturers.
+
+---
+
+# Server Manufacturers
+
+---
+
+## Dell Technologies
+
+Classification:
+
+```text
+Server Manufacturer
+Enterprise Infrastructure Provider
+```
+
+Builds:
+
+* Data center servers
+* Storage arrays
+
+Used heavily by enterprises and cloud providers.
+
+---
+
+## HPE
+
+Classification:
+
+```text
+Enterprise Server Provider
+Infrastructure Platform Provider
+```
+
+Major server and supercomputing vendor.
+
+---
+
+## Supermicro
+
+Classification:
+
+```text
+Server Manufacturer
+AI Infrastructure Supplier
+```
+
+Huge supplier of GPU servers.
+
+---
+
+# Optical & Fiber Hardware
+
+---
+
+## Ciena
+
+Classification:
+
+```text
+Optical Networking Provider
+Long-Haul Fiber Infrastructure Supplier
+```
+
+Provides equipment that moves traffic across continents.
+
+---
+
+## Infinera
+
+Classification:
+
+```text
+Optical Transport Provider
+Fiber Infrastructure Equipment Vendor
+```
+
+Major backbone networking supplier.
+
+---
+
+## Corning
+
+Classification:
+
+```text
+Fiber Optics Manufacturer
+Materials Science Company
+```
+
+Produces:
+
+```text
+Optical fiber
+Fiber cable components
+```
+
+Large portions of global fiber ultimately trace back to companies like Corning.
+
+---
+
+# Hardware Dependency Graph
+
+```mermaid
+flowchart TD
+
+subgraph Materials
+Corning
+ShinEtsu
+SUMCO
+GlobalWafers
+end
+
+subgraph DesignTools
+Cadence
+Synopsys
+SiemensEDA
+end
+
+subgraph Equipment
+Zeiss
+Trumpf
+ASML
+end
+
+subgraph Foundries
+TSMC
+SamsungFoundry
+IntelFoundry
+end
+
+subgraph Packaging
+ASE
+Amkor
+end
+
+subgraph ChipDesigners
+Apple
+NVIDIA
+AMD
+Qualcomm
+Broadcom
+Marvell
+MediaTek
+end
+
+subgraph Memory
+SamsungMemory
+SKHynix
+Micron
+end
+
+subgraph InfrastructureHardware
+Cisco
+Juniper
+Arista
+Nokia
+Ericsson
+Ciena
+Infinera
+Dell
+HPE
+Supermicro
+end
+
+subgraph Cloud
+AWS
+Azure
+GoogleCloud
+Cloudflare
+end
+
+ShinEtsu --> TSMC
+SUMCO --> TSMC
+GlobalWafers --> TSMC
+
+Cadence --> Apple
+Cadence --> NVIDIA
+
+Synopsys --> Apple
+Synopsys --> NVIDIA
+
+Zeiss --> ASML
+Trumpf --> ASML
+
+ASML --> TSMC
+ASML --> SamsungFoundry
+ASML --> IntelFoundry
+
+Apple --> TSMC
+NVIDIA --> TSMC
+AMD --> TSMC
+Broadcom --> TSMC
+
+TSMC --> ASE
+TSMC --> Amkor
+
+ASE --> Cisco
+ASE --> Arista
+ASE --> Dell
+
+Amkor --> Cisco
+Amkor --> Supermicro
+
+SKHynix --> NVIDIA
+Micron --> Dell
+
+Cisco --> AWS
+Arista --> Azure
+Supermicro --> GoogleCloud
+
+Ciena --> Cloudflare
+Infinera --> AWS
+```
+
+---
+
+# Additional Critical Organizations You're Still Missing
+
+For a truly comprehensive map, I'd add these next:
+
+### Semiconductor IP
+
+* ARM
+* Imagination Technologies
+* Rambus
+* CEVA
+
+### Manufacturing Equipment
+
+* Applied Materials
+* Lam Research
+* KLA
+* Tokyo Electron
+
+### Materials & Chemicals
+
+* Corning
+* JSR
+* Merck Electronics
+* DuPont Electronics
+* Air Liquide
+* Linde
+
+### Memory
+
+* Samsung
+* SK Hynix
+* Micron
+* Kioxia
+
+### Server / Compute
+
+* Dell
+* HPE
+* Supermicro
+* Lenovo
+
+### Optical
+
+* Ciena
+* Infinera
+* Nokia Optical
+* Fujitsu Optical
+
+### Research / Standards
+
+* IBM
+* IEEE
+* IETF
+* W3C
+* Linux Foundation
+
+
+
+
 I would actually dedicate an entire section of your documentation to **"The Semiconductor Dependency Graph"**. It complements your Internet map perfectly by showing that every website, cloud provider, AI model, CDN, and mobile network ultimately traces back to a surprisingly small number of companies responsible for chip design, lithography, fabrication, networking hardware, and advanced manufacturing. That "bottom layer" is what makes every layer above it possible.
