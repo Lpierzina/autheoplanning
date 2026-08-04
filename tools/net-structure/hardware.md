@@ -1558,3 +1558,689 @@ For a truly comprehensive map, I'd add these next:
 
 
 I would actually dedicate an entire section of your documentation to **"The Semiconductor Dependency Graph"**. It complements your Internet map perfectly by showing that every website, cloud provider, AI model, CDN, and mobile network ultimately traces back to a surprisingly small number of companies responsible for chip design, lithography, fabrication, networking hardware, and advanced manufacturing. That "bottom layer" is what makes every layer above it possible.
+
+
+
+
+
+Your diagram is actually getting close to the point where adding *more logos* becomes less useful than adding the **missing flows** between layers.
+
+Looking at what you have, the biggest missing pieces are:
+
+```text
+RAW MATERIALS
+     ↓
+CHEMICALS
+     ↓
+FAB EQUIPMENT
+     ↓
+FOUNDRY
+     ↓
+PACKAGING
+     ↓
+COMPONENTS
+     ↓
+SYSTEMS
+     ↓
+DATACENTERS
+```
+
+Right now some organizations are floating without their actual dependencies shown.
+
+---
+
+# Where DuPont Actually Fits
+
+Most people think DuPont is a semiconductor company.
+
+It isn't.
+
+It is a **materials company**.
+
+Classification:
+
+```text
+Electronic Materials Supplier
+Advanced Polymer Manufacturer
+Semiconductor Chemical Provider
+```
+
+Produces:
+
+```text
+Photoresist Materials
+Circuit Board Materials
+Advanced Polymers
+Interconnect Materials
+```
+
+Diagram:
+
+```mermaid
+flowchart LR
+
+DuPont
+
+TSMC
+Samsung
+Intel
+
+DuPont --> TSMC
+DuPont --> Samsung
+DuPont --> Intel
+```
+
+Think:
+
+```text
+DuPont
+
+↓
+
+Materials used during manufacturing
+```
+
+not
+
+```text
+DuPont
+
+↓
+
+Chips
+```
+
+---
+
+# Where Air Liquide & Linde Fit
+
+This is a missing connection.
+
+Your gases should connect directly into fabrication.
+
+Classification:
+
+```text
+Industrial Gas Suppliers
+Semiconductor Process Infrastructure
+```
+
+Provide:
+
+```text
+Nitrogen
+Argon
+Helium
+Hydrogen
+Neon
+```
+
+Used in:
+
+```text
+Etching
+Deposition
+Cleaning
+Lithography
+```
+
+Diagram:
+
+```mermaid
+flowchart LR
+
+AirLiquide
+Linde
+
+TSMC
+Samsung
+Intel
+
+AirLiquide --> TSMC
+AirLiquide --> Samsung
+AirLiquide --> Intel
+
+Linde --> TSMC
+Linde --> Samsung
+Linde --> Intel
+```
+
+Without these companies:
+
+```text
+Fab shuts down immediately
+```
+
+---
+
+# Missing Rare Earth Layer
+
+You have a "Rare Earths" box but no companies.
+
+Add:
+
+## MP Materials
+
+Classification:
+
+```text
+Rare Earth Producer
+Strategic Materials Supplier
+```
+
+---
+
+## Lynas
+
+Classification:
+
+```text
+Rare Earth Refiner
+Critical Minerals Producer
+```
+
+---
+
+## China Northern Rare Earth
+
+Classification:
+
+```text
+Rare Earth Mining Company
+Strategic Materials Supplier
+```
+
+Diagram:
+
+```mermaid
+flowchart TD
+
+RareEarths
+
+MP
+Lynas
+ChinaRareEarth
+
+RareEarths --> MP
+RareEarths --> Lynas
+RareEarths --> ChinaRareEarth
+
+MP --> Magnets
+Lynas --> Magnets
+ChinaRareEarth --> Magnets
+
+Magnets --> HardDrives
+Magnets --> Motors
+Magnets --> Electronics
+```
+
+---
+
+# Missing Manufacturing Equipment Layer
+
+This is one of the largest gaps.
+
+Right now ASML is getting too much credit.
+
+Reality:
+
+```text
+TSMC Fab
+
+ASML
+Applied Materials
+Lam Research
+KLA
+Tokyo Electron
+
+ALL REQUIRED
+```
+
+Diagram:
+
+```mermaid
+flowchart TD
+
+ASML
+
+AppliedMaterials
+
+LamResearch
+
+KLA
+
+TokyoElectron
+
+TSMC
+
+ASML --> TSMC
+AppliedMaterials --> TSMC
+LamResearch --> TSMC
+KLA --> TSMC
+TokyoElectron --> TSMC
+```
+
+A useful note:
+
+```text
+ASML = Prints transistor patterns
+
+Applied Materials = Deposits materials
+
+Lam = Etches materials
+
+KLA = Inspects materials
+
+TEL = Cleans and processes materials
+```
+
+---
+
+# Missing PCB Layer
+
+Almost every device has PCBs.
+
+Add:
+
+## TTM Technologies
+
+Classification:
+
+```text
+PCB Manufacturer
+Electronics Manufacturing Supplier
+```
+
+---
+
+## Unimicron
+
+Classification:
+
+```text
+Advanced PCB Manufacturer
+Semiconductor Substrate Supplier
+```
+
+Diagram:
+
+```mermaid
+flowchart LR
+
+TSMC
+
+ASE
+
+PCB
+
+Server
+
+TSMC --> ASE
+
+ASE --> PCB
+
+PCB --> Server
+```
+
+---
+
+# Missing Substrate Layer
+
+This is actually one of the most important missing sections.
+
+Modern AI chips depend heavily on advanced packaging substrates.
+
+Add:
+
+## Ibiden
+
+Classification:
+
+```text
+Semiconductor Substrate Supplier
+Advanced Packaging Manufacturer
+```
+
+---
+
+## Shinko Electric
+
+Classification:
+
+```text
+Chip Packaging Substrate Supplier
+```
+
+---
+
+## Unimicron
+
+Classification:
+
+```text
+IC Substrate Manufacturer
+```
+
+Diagram:
+
+```mermaid
+flowchart LR
+
+Ibiden
+
+Shinko
+
+Unimicron
+
+ASE
+
+Amkor
+
+Ibiden --> ASE
+Shinko --> ASE
+Unimicron --> Amkor
+```
+
+---
+
+# Missing Contract Manufacturing
+
+Many companies don't build their own servers.
+
+Add:
+
+## Foxconn
+
+Classification:
+
+```text
+Electronics Manufacturer
+Contract Manufacturing Giant
+```
+
+Builds:
+
+```text
+Servers
+Phones
+Networking Equipment
+```
+
+---
+
+## Wistron
+
+Classification:
+
+```text
+Contract Manufacturer
+Server Builder
+```
+
+---
+
+## Quanta
+
+Classification:
+
+```text
+Cloud Server Manufacturer
+ODM Provider
+```
+
+This one is huge.
+
+Many cloud servers are actually made by Quanta.
+
+Diagram:
+
+```mermaid
+flowchart TD
+
+Intel
+AMD
+NVIDIA
+
+Quanta
+
+AWS
+Azure
+Google
+
+Intel --> Quanta
+AMD --> Quanta
+NVIDIA --> Quanta
+
+Quanta --> AWS
+Quanta --> Azure
+Quanta --> Google
+```
+
+---
+
+# Missing AI Infrastructure Layer
+
+A new section beneath cloud.
+
+Add:
+
+## CoreWeave
+
+Classification:
+
+```text
+GPU Cloud Provider
+AI Infrastructure Provider
+```
+
+---
+
+## Crusoe
+
+Classification:
+
+```text
+AI Data Center Operator
+GPU Infrastructure Provider
+```
+
+---
+
+## Lambda Labs
+
+Classification:
+
+```text
+AI Compute Provider
+GPU Cloud Platform
+```
+
+These sit between:
+
+```text
+NVIDIA
+
+↓
+
+AI Clouds
+
+↓
+
+OpenAI
+Anthropic
+xAI
+```
+
+---
+
+# Missing Power Layer (Extremely Important)
+
+Every diagram misses this.
+
+Nothing works without:
+
+```text
+Utilities
+
+↓
+
+Substations
+
+↓
+
+Data Centers
+
+↓
+
+Cloud
+```
+
+Add:
+
+## Schneider Electric
+
+Classification:
+
+```text
+Data Center Power Infrastructure
+Electrical Systems Provider
+```
+
+---
+
+## Eaton
+
+Classification:
+
+```text
+Power Management Company
+UPS Provider
+```
+
+---
+
+## Vertiv
+
+Classification:
+
+```text
+Data Center Cooling Provider
+Power Infrastructure Provider
+```
+
+Diagram:
+
+```mermaid
+flowchart TD
+
+PowerGrid
+
+Schneider
+Vertiv
+Eaton
+
+DataCenter
+
+PowerGrid --> Schneider
+PowerGrid --> Vertiv
+PowerGrid --> Eaton
+
+Schneider --> DataCenter
+Vertiv --> DataCenter
+Eaton --> DataCenter
+```
+
+---
+
+# Most Important Missing Companies
+
+If I were continuing your map, these would be my highest-priority additions:
+
+```text
+MATERIALS
+---------
+DuPont
+JSR
+Merck
+Air Liquide
+Linde
+Shin-Etsu
+SUMCO
+
+EQUIPMENT
+---------
+Applied Materials
+Lam Research
+KLA
+Tokyo Electron
+
+SUBSTRATES
+----------
+Ibiden
+Shinko
+Unimicron
+
+PACKAGING
+---------
+ASE
+Amkor
+
+CONTRACT MANUFACTURING
+----------------------
+Foxconn
+Quanta
+Wistron
+
+POWER
+-----
+Schneider Electric
+Vertiv
+Eaton
+
+AI INFRASTRUCTURE
+-----------------
+CoreWeave
+Crusoe
+Lambda
+
+RARE EARTHS
+-----------
+MP Materials
+Lynas
+China Northern Rare Earth
+
+OPTICS
+-------
+Coherent
+Lumentum
+Hamamatsu
+```
+
+ **"How a Server Is Born"** diagram:
+
+```text
+Sand
+ ↓
+Silicon Wafer
+ ↓
+TSMC
+ ↓
+ASE / Amkor
+ ↓
+CPU / GPU
+ ↓
+Foxconn / Quanta
+ ↓
+Dell / HPE / Supermicro
+ ↓
+AWS / Azure / Google
+ ↓
+Cloudflare
+ ↓
+GitHub / Netflix / OpenAI
+ ↓
+User
+```
+
+That single flow explains more of the modern Internet than most 100-page reports.
+
