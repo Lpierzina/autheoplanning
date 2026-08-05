@@ -8,9 +8,9 @@
 
 ```text
                   APPLICATIONS
-        ┌────────────────────────────┐
+        ┌─────────────────────────────────┐
         │ Files │ AI │ Chat │ IoT │ Video │
-        └──────────────┬─────────────┘
+        └──────────────┬──────────────────┘
                        │
           Distributed Data Layer
                CRDT Synchronization
@@ -154,7 +154,7 @@ Laptop
 
 Switch
 
- ┌────┼────┐
+ ┌──────────┼──────────┐
 
 Desktop
 
