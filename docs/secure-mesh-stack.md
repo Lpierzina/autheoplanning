@@ -148,19 +148,15 @@ they automatically discover one another.
 ```text
 Office LAN
 
-Laptop
+            Laptop
 
-     │
+               │
 
-Switch
+            Switch
 
- ┌──────────┼──────────┐
+ ┌────────────┼───────────┐
 
-Desktop
-
-Server
-
-NAS
+Desktop    Server        NAS
 ```
 
 No cloud server required.
