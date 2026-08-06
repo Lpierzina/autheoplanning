@@ -1,6 +1,5 @@
-This is actually one of the biggest messaging challenges you'll have. Right now, many people hear "decentralized" and immediately think "blockchain." But a blockchain is **only one type of distributed system**. Your platform is much closer to a decentralized cloud operating system than to a blockchain.
+Right now, many people hear "decentralized" and immediately think "blockchain." But a blockchain is **only one type of distributed system**. Your platform is much closer to a decentralized cloud operating system than to a blockchain.
 
-Here's how I'd explain it.
 
 ---
 
