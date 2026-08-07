@@ -3,7 +3,8 @@
 ### Turning Independent Devices Into A Unified Global Cloud
 
 
-[Platform Organization & System Boundaries](#Platform Organization & System Boundaries)
+1. [Platform Overview](#1-platform-overview)
+2. [Platform Organization & System Boundaries](#2-platform-organization--system-boundaries)
 
 ---
 
