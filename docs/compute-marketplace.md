@@ -540,3 +540,559 @@ The marketplace becomes the economic and trust layer.
 The mesh becomes the execution layer.
 
 Together they create a decentralized cloud where anyone can contribute resources, developers can deploy globally with a single click, enterprises can build local hyperscalers, and users benefit from lower costs, lower latency, greater resilience, and a post-quantum-ready security architecture.
+
+
+
+I actually think this is the point where the documentation should evolve beyond "here are technologies" and start looking like AWS or Kubernetes architecture documentation. One thing I'd change from the previous diagrams is making a **clear separation of organizations and responsibilities**. Right now everything is "AI THEO", but in reality there are several independent systems that interact.
+
+I would dedicate an entire section called:
+
+# Platform Organization & System Boundaries
+
+---
+
+# The AI THEO Ecosystem
+
+The platform is not a single monolithic application.
+
+It is a collection of independent systems that communicate through well-defined APIs, cryptographic identities, and on-chain trust.
+
+```mermaid
+flowchart TB
+
+subgraph Governance["Autheo Organization"]
+DAO[DAO Governance]
+Foundation[Foundation]
+Protocol[Protocol Steering]
+Treasury[Treasury]
+end
+
+subgraph Blockchain["Autheo Layer 1 Blockchain"]
+Validators[Validators]
+Consensus[Consensus]
+SmartContracts[Smart Contracts]
+Identity[Decentralized Identity]
+Token[$THEO]
+end
+
+subgraph Marketplace["AI THEO Compute Marketplace"]
+Scheduler[Global Scheduler]
+ResourceRegistry[Resource Registry]
+MarketplaceAPI[Marketplace API]
+Pricing[Pricing Engine]
+Reputation[Reputation]
+Billing[Billing]
+end
+
+subgraph Developer["Developer Platform"]
+CLI[CLI]
+SDK[SDKs]
+Templates[Templates]
+Dashboard[Developer Portal]
+Deployment[Deployment API]
+end
+
+subgraph Network["Distributed Compute Mesh"]
+Compute[Compute Nodes]
+Storage[Storage Nodes]
+GPU[GPU Nodes]
+Bandwidth[Relay Nodes]
+Edge[Edge Clusters]
+end
+
+Governance --> Blockchain
+
+Blockchain --> Marketplace
+
+Developer --> Marketplace
+
+Marketplace --> Network
+```
+
+Notice something important:
+
+**The blockchain is NOT the compute platform.**
+
+It provides trust.
+
+The marketplace coordinates resources.
+
+The mesh performs execution.
+
+The developer platform builds applications.
+
+Governance evolves the protocol.
+
+---
+
+# Control Plane vs Data Plane vs Trust Plane
+
+This becomes one of the most important concepts.
+
+```text
+                     USERS
+
+                        │
+
+────────────────────────────────────────────
+
+              Developer Platform
+
+      CLI • SDK • Dashboard • APIs
+
+────────────────────────────────────────────
+
+             CONTROL PLANE
+
+Marketplace
+Scheduling
+Resource Discovery
+Deployment
+Pricing
+Reputation
+Monitoring
+
+────────────────────────────────────────────
+
+              TRUST PLANE
+
+Identity
+Validators
+Blockchain
+Smart Contracts
+Payments
+Governance
+Audit
+
+────────────────────────────────────────────
+
+              DATA PLANE
+
+Compute
+Storage
+Networking
+AI
+Containers
+WASM
+Databases
+
+────────────────────────────────────────────
+
+              PHYSICAL NODES
+
+Office PCs
+Servers
+GPU Clusters
+Factories
+Edge Devices
+Home Labs
+Cloud VMs
+```
+
+Notice how each plane has a completely different responsibility.
+
+---
+
+# The Marketplace Doesn't Run Applications
+
+This misconception should be addressed immediately.
+
+```mermaid
+sequenceDiagram
+
+participant Dev as Developer
+
+participant MP as Marketplace
+
+participant Chain as Blockchain
+
+participant Node as Compute Node
+
+Dev->>MP: Deploy Application
+
+MP->>Chain: Verify payment & permissions
+
+Chain-->>MP: Authorized
+
+MP->>Node: Schedule workload
+
+Node-->>Dev: Direct encrypted connection
+
+Node->>Chain: Submit usage proofs
+
+Chain->>MP: Settlement complete
+```
+
+The marketplace is an orchestrator.
+
+Not a hypervisor.
+
+---
+
+# Regional Meshes
+
+Instead of imagining one global mesh...
+
+Imagine thousands of local clouds.
+
+```mermaid
+flowchart TB
+
+subgraph Seattle
+
+A1[Office Mesh]
+
+A2[University Mesh]
+
+A3[Home Mesh]
+
+A4[Factory Mesh]
+
+end
+
+subgraph Denver
+
+B1[Enterprise Mesh]
+
+B2[GPU Mesh]
+
+B3[Retail Mesh]
+
+end
+
+subgraph London
+
+C1[Research Mesh]
+
+C2[Datacenter Mesh]
+
+end
+
+Seattle <--QUIC--> Denver
+
+Denver <--QUIC--> London
+
+Seattle <--QUIC--> London
+```
+
+Every city naturally forms its own cloud.
+
+Those clouds become part of the worldwide network.
+
+---
+
+# Enterprise Local Hyperscaler
+
+One of the strongest differentiators deserves its own section.
+
+```text
+                     Enterprise
+
+────────────────────────────────────────────
+
+Employees
+
+AI Agents
+
+Applications
+
+IoT Devices
+
+Robots
+
+────────────────────────────────────────────
+
+Enterprise Marketplace Gateway
+
+────────────────────────────────────────────
+
+Office Mesh
+
+Factory Mesh
+
+Warehouse Mesh
+
+Retail Mesh
+
+Datacenter Mesh
+
+────────────────────────────────────────────
+
+Enterprise Resource Pool
+
+Compute
+
+Storage
+
+AI
+
+Networking
+
+Databases
+
+────────────────────────────────────────────
+
+Optional Federation
+
+↓
+
+Global Marketplace
+```
+
+Notice:
+
+The enterprise owns everything.
+
+AI THEO simply connects it.
+
+---
+
+# Internal Mesh Hierarchy
+
+Rather than every computer talking to every other computer, use a hierarchical topology.
+
+```mermaid
+flowchart TD
+
+Gateway
+
+Gateway --> ClusterA
+
+Gateway --> ClusterB
+
+Gateway --> ClusterC
+
+ClusterA --> Node1
+
+ClusterA --> Node2
+
+ClusterA --> Node3
+
+ClusterB --> Node4
+
+ClusterB --> Node5
+
+ClusterC --> GPU1
+
+ClusterC --> GPU2
+```
+
+Benefits:
+
+* Less routing overhead
+* Better scalability
+* Better scheduling
+* Easier monitoring
+* Reduced bandwidth
+
+This is much closer to how real distributed systems such as Kubernetes, Borg, and Nomad are organized.
+
+---
+
+# Developer Deployment Pipeline
+
+```mermaid
+flowchart LR
+
+Code
+
+-->
+
+Build
+
+-->
+
+Container/WASM
+
+-->
+
+Marketplace
+
+-->
+
+Scheduler
+
+-->
+
+Regional Cluster
+
+-->
+
+Node
+
+-->
+
+Running Service
+
+-->
+
+Global Endpoint
+```
+
+One deployment.
+
+Thousands of execution locations.
+
+---
+
+# The Marketplace Internals
+
+Instead of showing it as one box, expand it.
+
+```text
+                   Marketplace
+
+┌────────────────────────────────────┐
+
+Deployment API
+
+Marketplace API
+
+Authentication
+
+Identity
+
+────────────────────────────────────
+
+Scheduler
+
+Resource Discovery
+
+Placement Engine
+
+Capacity Planner
+
+Load Balancer
+
+────────────────────────────────────
+
+Billing
+
+Pricing Engine
+
+Escrow
+
+Payments
+
+Reputation
+
+────────────────────────────────────
+
+Monitoring
+
+Logging
+
+Metrics
+
+Auditing
+
+────────────────────────────────────
+
+Policy Engine
+
+Compliance
+
+Enterprise Controls
+
+SLAs
+
+────────────────────────────────────┘
+```
+
+This makes it look like a genuine cloud platform rather than a crypto marketplace.
+
+---
+
+# The Long-Term Vision
+
+This is the diagram I'd end the chapter with because it clearly communicates the platform's ambition.
+
+```text
+                  Internet
+
+                     │
+
+        ┌────────────┼────────────┐
+
+      Developers
+
+     Enterprises
+
+         Individuals
+
+            Governments
+
+──────────────────────────────────────
+
+         AI THEO Platform
+
+Developer Hub
+
+Compute Marketplace
+
+Identity
+
+Deployment
+
+Scheduling
+
+Billing
+
+Observability
+
+──────────────────────────────────────
+
+      Global Compute Fabric
+
+Regional Meshes
+
+Enterprise Meshes
+
+University Meshes
+
+Home Labs
+
+Cloud Providers
+
+GPU Farms
+
+IoT Networks
+
+──────────────────────────────────────
+
+        Unified Distributed Cloud
+
+Compute
+
+Storage
+
+AI
+
+Networking
+
+Applications
+
+Streaming
+
+Databases
+
+Hosting
+
+Inference
+
+──────────────────────────────────────
+
+     Millions of Independently Owned Nodes
+```
+
+## One architectural refinement I would strongly recommend
+
+Based on everything we've built over the past few weeks, I think the platform should consistently be described as **four independent products** that together form the ecosystem:
+
+1. **Autheo Layer 1** – Trust, identity, payments, governance, staking, settlement, and programmable assets.
+2. **AI THEO Compute Marketplace** – Resource discovery, scheduling, reputation, pricing, billing, and workload placement.
+3. **Developer Platform** – CLI, SDKs, APIs, templates, CI/CD integration, observability, and one-click deployment.
+4. **Distributed Compute Mesh** – The actual execution environment that provides compute, storage, networking, AI inference, and edge services.
+
+That separation mirrors how major cloud platforms are organized: governance and trust, control plane, developer experience, and execution infrastructure each have distinct responsibilities, making the overall architecture easier for enterprises and developers to understand.
+
