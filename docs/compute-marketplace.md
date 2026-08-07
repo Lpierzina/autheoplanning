@@ -3,8 +3,9 @@
 ### Turning Independent Devices Into A Unified Global Cloud
 
 
-1. [Platform Overview](#1-platform-overview)
-2. [Platform Organization & System Boundaries](#2-platform-organization--system-boundaries)
+1. [Vision](#Vision)
+2. [The AUTHEO Ecosystem](#The-AI-THEO-Ecosystem)
+3. [Platform Organization & System Boundaries](#2-platform-organization--system-boundaries)
 
 ---
 
