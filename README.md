@@ -11,7 +11,7 @@
           ├── POP
           ├── mail
           └── blog
-```
+
 
 
 
@@ -20,10 +20,11 @@ docs/
 README.md
 
 platform/
-    overview.md
-    architecture.md
-    ecosystem.md
-    roadmap.md
+          │
+          ├── overview.md
+          ├── architecture.md
+          ├── ecosystem.md
+          └── roadmap.md
 
 blockchain/
     overview.md
@@ -73,3 +74,6 @@ enterprise/
     hybrid-cloud.md
     ai.md
     compliance.md
+
+
+```
