@@ -2,6 +2,9 @@
 
 ### Turning Independent Devices Into A Unified Global Cloud
 
+
+[Platform Organization & System Boundaries](# Platform Organization & System Boundaries)
+
 ---
 
 # Vision
@@ -543,9 +546,7 @@ Together they create a decentralized cloud where anyone can contribute resources
 
 
 
-I actually think this is the point where the documentation should evolve beyond "here are technologies" and start looking like AWS or Kubernetes architecture documentation. One thing I'd change from the previous diagrams is making a **clear separation of organizations and responsibilities**. Right now everything is "AI THEO", but in reality there are several independent systems that interact.
 
-I would dedicate an entire section called:
 
 # Platform Organization & System Boundaries
 
