@@ -4,13 +4,13 @@ This shouldn't be a technical document.
 
 It should answer
 
-> **"What exactly is AI THEO?"**
+> **"What exactly is AUTHEO?"**
 
 This is almost like the front page of AWS documentation.
 
 ---
 
-# AI THEO Platform
+# AUTHEO Platform
 
 ## Building the Internet's Distributed Cloud
 
@@ -22,9 +22,9 @@ Traditional cloud platforms are built around centralized infrastructure.
 
 Organizations rent compute, storage, networking, databases, and AI services from large hyperscale data centers operated by a handful of providers.
 
-AI THEO takes a fundamentally different approach.
+AUTHEO takes a fundamentally different approach.
 
-Rather than concentrating infrastructure into massive facilities, AI THEO enables anyone—from individuals and startups to enterprises and cloud providers—to contribute computing resources into a secure global marketplace. Those independently operated resources form a unified distributed cloud capable of running applications, AI workloads, storage services, networking, and edge infrastructure.
+Rather than concentrating infrastructure into massive facilities, AUTHEO enables anyone—from individuals and startups to enterprises and cloud providers—to contribute computing resources into a secure global marketplace. Those independently operated resources form a unified distributed cloud capable of running applications, AI workloads, storage services, networking, and edge infrastructure.
 
 The result is a platform that combines the flexibility of public cloud computing with the resilience, ownership, and locality of decentralized infrastructure.
 
@@ -51,7 +51,7 @@ Thousands of Servers
 
 ──────────────────────────────────────
 
-              AI THEO
+              AUTHEO
 
 Applications
 
@@ -76,7 +76,7 @@ Instead of asking:
 
 > *Where is the nearest cloud region?*
 
-AI THEO asks:
+AUTHEO asks:
 
 > *What resources already exist nearby?*
 
@@ -109,7 +109,7 @@ A[Autheo Organization]
 
 B[Autheo Layer 1]
 
-C[AI THEO Marketplace]
+C[AUTHEO Marketplace]
 
 D[Developer Platform]
 
@@ -173,7 +173,7 @@ Applications are generally **not executed directly on-chain**. Instead, the bloc
 
 ---
 
-# 3. AI THEO Compute Marketplace
+# 3. AUTHEO Compute Marketplace
 
 The marketplace serves as the platform's global control plane.
 
@@ -217,7 +217,7 @@ Rather than relying on a handful of hyperscale regions, workloads execute wherev
 
 # 5. Developer Platform
 
-Developers interact with AI THEO through a modern cloud-native experience.
+Developers interact with AUTHEO through a modern cloud-native experience.
 
 Capabilities include:
 
@@ -232,7 +232,7 @@ Capabilities include:
 * Metrics
 * Billing dashboards
 
-From the developer's perspective, deploying to AI THEO should feel as simple as deploying to Vercel, Fly.io, or AWS—while the platform transparently handles decentralized scheduling and execution.
+From the developer's perspective, deploying to AUTHEO should feel as simple as deploying to Vercel, Fly.io, or AWS—while the platform transparently handles decentralized scheduling and execution.
 
 ---
 
@@ -288,11 +288,11 @@ This separation of concerns allows each component to evolve independently while 
 
 Most decentralized platforms begin with a blockchain and attempt to build applications around it.
 
-AI THEO begins with the applications developers want to build—web services, AI inference, storage, databases, multiplayer games, APIs, and enterprise software—and uses decentralized technologies only where they provide clear value.
+AUTHEO begins with the applications developers want to build—web services, AI inference, storage, databases, multiplayer games, APIs, and enterprise software—and uses decentralized technologies only where they provide clear value.
 
 This architecture offers several advantages:
 
-| Traditional Model                         | AI THEO Model                                                     |
+| Traditional Model                         | AUTHEO Model                                                     |
 | ----------------------------------------- | ----------------------------------------------------------------- |
 | Centralized infrastructure                | Distributed resource marketplace                                  |
 | Fixed cloud regions                       | Global edge-first compute mesh                                    |
@@ -305,7 +305,7 @@ This architecture offers several advantages:
 
 ## One recommendation I'd make
 
-I actually think **"AI THEO" is becoming the flagship product**, while **Autheo** becomes the ecosystem brand.
+I actually think **"AUTHEO" is becoming the flagship product**, while **Autheo** becomes the ecosystem brand.
 
 So in the docs, the hierarchy naturally reads as:
 
