@@ -1,4 +1,4 @@
-## AUTHEO THEO Distributed Compute Marketplace
+## AUTHEO $THEO Distributed Compute Marketplace
 
 ### Turning Independent Devices Into A Unified Global Cloud
 
