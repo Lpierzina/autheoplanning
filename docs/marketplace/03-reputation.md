@@ -1,16 +1,16 @@
 # Reputation
 
-# Veritsa Reputation Framework
+# Veritas Reputation Framework
 
 ## Distributed Infrastructure Reputation, Trust Scoring & Visualization
 
 ## Overview
 
-**Veritsa** is the reputation and trust framework for the Autheo infrastructure marketplace.
+**Veritas** is the reputation and trust framework for the Autheo infrastructure marketplace.
 
-Veritsa provides a standardized way to represent the historical reliability, operational quality, security posture, and marketplace behavior of infrastructure nodes.
+Veritas provides a standardized way to represent the historical reliability, operational quality, security posture, and marketplace behavior of infrastructure nodes.
 
-Every participating infrastructure provider can have a Veritsa profile.
+Every participating infrastructure provider can have a Veritas profile.
 
 Every node can therefore be represented not simply as:
 
@@ -23,7 +23,7 @@ but as:
 ```text
 NODE
  │
- └── VERITSA
+ └── Veritas
       ├── Trust Score
       ├── Reliability
       ├── Performance
@@ -34,9 +34,9 @@ NODE
       └── Evidence
 ```
 
-The purpose of Veritsa is not to claim that a node is "trusted" or "untrusted."
+The purpose of Veritas is not to claim that a node is "trusted" or "untrusted."
 
-Instead, Veritsa provides a **transparent, continuously updated representation of observed behavior and available evidence**.
+Instead, Veritas provides a **transparent, continuously updated representation of observed behavior and available evidence**.
 
 A high score means that a node has demonstrated strong historical characteristics across the dimensions measured by the system.
 
@@ -46,7 +46,7 @@ A low score indicates uncertainty, poor performance, limited history, or demonst
 
 # 1. Design Philosophy
 
-Veritsa is built around five principles:
+Veritas is built around five principles:
 
 1. **Evidence over claims**
 2. **History over snapshots**
@@ -74,9 +74,9 @@ This distinction is fundamental.
 
 ---
 
-# 2. What Veritsa Represents
+# 2. What Veritas Represents
 
-Veritsa represents confidence in a node's **observed behavior**.
+Veritas represents confidence in a node's **observed behavior**.
 
 It does not represent:
 
@@ -105,12 +105,12 @@ Instead, it summarizes evidence such as:
 
 ---
 
-# 3. The Veritsa Score
+# 3. The Veritas Score
 
-Each node receives an overall Veritsa score.
+Each node receives an overall Veritas score.
 
 ```text
-VERITSA
+Veritas
   0 ─────────────────────────────────── 100
   │                                      │
   │                                      │
@@ -124,7 +124,7 @@ Example:
 ```text
 NODE-4821
 
-VERITSA
+Veritas
 ██████████████████████████████████░░░░░░
                          87 / 100
 ```
@@ -137,7 +137,7 @@ Users should always be able to inspect the underlying dimensions.
 
 # 4. Trust Bands
 
-Veritsa can divide scores into broad trust bands.
+Veritas can divide scores into broad trust bands.
 
 ```text
 90–100    Exceptional
@@ -162,7 +162,7 @@ A single number cannot adequately describe infrastructure.
 Two nodes could both have:
 
 ```text
-VERITSA = 85
+Veritas = 85
 ```
 
 while having very different characteristics.
@@ -193,16 +193,16 @@ History         84
 
 Both may be appropriate for different workloads.
 
-Therefore Veritsa exposes the dimensions behind the score.
+Therefore Veritas exposes the dimensions behind the score.
 
 ---
 
-# 6. Core Veritsa Dimensions
+# 6. Core Veritas Dimensions
 
 The primary reputation model consists of:
 
 ```text
-                    VERITSA
+                    Veritas
                        │
        ┌───────────────┼────────────────┐
        │               │                │
@@ -389,7 +389,7 @@ Instead, it should receive a **low confidence level**.
 
 # 12. Confidence vs Score
 
-Veritsa separates:
+Veritas separates:
 
 ```text
 TRUST SCORE
@@ -406,7 +406,7 @@ This is one of the most important properties of the framework.
 Example:
 
 ```text
-VERITSA: 91
+Veritas: 91
 CONFIDENCE: HIGH
 ```
 
@@ -415,7 +415,7 @@ means the system has substantial evidence supporting the score.
 Whereas:
 
 ```text
-VERITSA: 91
+Veritas: 91
 CONFIDENCE: LOW
 ```
 
@@ -433,7 +433,7 @@ New nodes enter a probationary state.
 NEW NODE
    │
    ▼
-INITIAL VERITSA
+INITIAL Veritas
    │
    ▼
 PROBATION
@@ -484,7 +484,7 @@ Reputation must not be permanent.
 
 A node that performed exceptionally three years ago should not automatically maintain the same reputation if it has recently degraded.
 
-Veritsa therefore uses **time-weighted evidence**.
+Veritas therefore uses **time-weighted evidence**.
 
 Recent observations have greater influence than very old observations.
 
@@ -522,7 +522,7 @@ Customer satisfied
         ↓
 Positive evidence
         ↓
-Veritsa increases
+Veritas increases
 ```
 
 Repeated successful behavior should gradually establish strong reputation.
@@ -544,7 +544,7 @@ Customer impact
         ↓
 Evidence recorded
         ↓
-Veritsa decreases
+Veritas decreases
 ```
 
 The severity of the event matters.
@@ -626,7 +626,7 @@ the system should be capable of communicating:
 
 # 20. Reputation Events
 
-Veritsa can maintain a structured event ledger.
+Veritas can maintain a structured event ledger.
 
 Example:
 
@@ -777,7 +777,7 @@ Potential attacks include:
 * Reciprocal reviews
 * Coordinated negative reviews
 
-Veritsa should therefore avoid:
+Veritas should therefore avoid:
 
 ```text
 1 USER
@@ -811,7 +811,7 @@ A malicious actor could create many identities to artificially generate reputati
 
 Therefore identity count alone should not translate into reputation.
 
-Veritsa should consider:
+Veritas should consider:
 
 * Economic history
 * Completed workloads
@@ -855,7 +855,7 @@ A diverse customer base is generally stronger evidence than repeated interaction
 
 # 27. Reputation Clustering
 
-Veritsa can analyze relationships between participants.
+Veritas can analyze relationships between participants.
 
 ```text
               NODE A
@@ -890,7 +890,7 @@ but mediocre at:
 GPU COMPUTE
 ```
 
-Therefore Veritsa should support category-specific reputation.
+Therefore Veritas should support category-specific reputation.
 
 ```text
 NODE-4821
@@ -933,13 +933,13 @@ A provider may perform differently across locations.
 ```text
 Provider
  ├── US-East
- │     └── Veritsa 94
+ │     └── Veritas 94
  │
  ├── EU-West
- │     └── Veritsa 88
+ │     └── Veritas 88
  │
  └── APAC
-       └── Veritsa 76
+       └── Veritas 76
 ```
 
 The marketplace can therefore evaluate infrastructure at the level where it is actually delivered.
@@ -996,13 +996,13 @@ Reputation should not be blindly inherited.
 For example:
 
 ```text
-Provider Veritsa = 95
+Provider Veritas = 95
 ```
 
 does not mean every new node automatically receives:
 
 ```text
-Node Veritsa = 95
+Node Veritas = 95
 ```
 
 Instead, provider history can contribute to an initial prior while node-specific evidence accumulates.
@@ -1019,9 +1019,9 @@ This allows established operators to benefit from history without eliminating no
 
 ---
 
-# 34. Veritsa Visualization
+# 34. Veritas Visualization
 
-The defining user-facing feature of Veritsa is its visualization.
+The defining user-facing feature of Veritas is its visualization.
 
 A node can display a compact trust indicator:
 
@@ -1029,7 +1029,7 @@ A node can display a compact trust indicator:
 ┌───────────────────────────────┐
 │ NODE-4821                     │
 │                               │
-│ VERITSA                       │
+│ Veritas                       │
 │ ████████████████████░░  88   │
 │                               │
 │ Confidence: HIGH              │
@@ -1063,16 +1063,16 @@ This allows users to see the shape of a node's reputation rather than only its a
 
 # 36. Trust Badge
 
-Veritsa can provide a compact badge for interfaces.
+Veritas can provide a compact badge for interfaces.
 
 ```text
-● VERITSA 92
+● Veritas 92
 ```
 
 or:
 
 ```text
-VERITSA
+Veritas
 92 / 100
 HIGH CONFIDENCE
 ```
@@ -1115,7 +1115,7 @@ A stable score can be more informative than a high score with severe volatility.
 A detailed profile can display:
 
 ```text
-VERITSA HISTORY
+Veritas HISTORY
 
 2026-08-10
 Successful lease
@@ -1140,7 +1140,7 @@ This makes the reputation system auditable and understandable.
 
 # 39. Reputation Volatility
 
-Veritsa should track volatility.
+Veritas should track volatility.
 
 Two nodes may have the same average score:
 
@@ -1181,7 +1181,7 @@ This becomes particularly important for long-running workloads.
 
 # 41. Reputation for Marketplace Matching
 
-Veritsa should become one input into Exchange matching.
+Veritas should become one input into Exchange matching.
 
 Conceptually:
 
@@ -1196,7 +1196,7 @@ Latency
    +
 Availability
    +
-Veritsa
+Veritas
    +
 Workload Compatibility
 ```
@@ -1212,7 +1212,7 @@ Customers can specify policies.
 Example:
 
 ```text
-Minimum Veritsa:
+Minimum Veritas:
     80
 
 Minimum Confidence:
@@ -1242,7 +1242,7 @@ Static website
 may accept:
 
 ```text
-Veritsa > 60
+Veritas > 60
 ```
 
 ### Important production workload
@@ -1254,7 +1254,7 @@ Financial API
 may require:
 
 ```text
-Veritsa > 90
+Veritas > 90
 High confidence
 Strong security
 High availability
@@ -1519,7 +1519,7 @@ A reputation score is only as useful as the integrity of the evidence behind it.
 
 # 54. Reputation Data Model
 
-A conceptual Veritsa record can contain:
+A conceptual Veritas record can contain:
 
 ```text
 {
@@ -1574,10 +1574,10 @@ Reliability:
 
 The scoring algorithm will inevitably evolve.
 
-Therefore Veritsa scores should include a model version.
+Therefore Veritas scores should include a model version.
 
 ```text
-VERITSA
+Veritas
 
 Score:
     88
@@ -1615,12 +1615,12 @@ The system should be able to reconstruct how a score was produced under a partic
 
 # 58. Explainability
 
-Every Veritsa score should be explainable at an appropriate level.
+Every Veritas score should be explainable at an appropriate level.
 
 Example:
 
 ```text
-VERITSA: 88
+Veritas: 88
 
 Why?
 
@@ -1643,7 +1643,7 @@ The user should never have to trust a completely opaque number.
 
 # 59. Trust Visualization for the Network
 
-Veritsa becomes particularly powerful when integrated into the network map.
+Veritas becomes particularly powerful when integrated into the network map.
 
 A network visualization can represent nodes as:
 
@@ -1655,7 +1655,7 @@ A network visualization can represent nodes as:
    ● 91
 ```
 
-Each node can display its Veritsa score.
+Each node can display its Veritas score.
 
 Users can then visually identify:
 
@@ -1713,7 +1713,7 @@ The visualization can expose areas where:
 
 ---
 
-# 62. Veritsa and Routing
+# 62. Veritas and Routing
 
 Reputation can also become a routing input when appropriate.
 
@@ -1721,11 +1721,11 @@ For example:
 
 ```text
 Route Candidate A
-Veritsa 95
+Veritas 95
 Latency 20 ms
 
 Route Candidate B
-Veritsa 78
+Veritas 78
 Latency 10 ms
 ```
 
@@ -1737,22 +1737,22 @@ The decision belongs to the policy layer.
 
 ---
 
-# 63. Veritsa and Failover
+# 63. Veritas and Failover
 
 Reputation can help determine backup infrastructure.
 
 ```text
 PRIMARY
 Node A
-Veritsa 94
+Veritas 94
 
 BACKUP
 Node B
-Veritsa 91
+Veritas 91
 
 TERTIARY
 Node C
-Veritsa 87
+Veritas 87
 ```
 
 This can produce intelligent redundancy strategies.
@@ -1779,7 +1779,7 @@ Region EU-West
 The best deployment may combine:
 
 ```text
-High Veritsa
+High Veritas
 +
 Provider diversity
 +
@@ -1792,12 +1792,12 @@ Network diversity
 
 # 65. Correlated Risk
 
-Veritsa should account for correlated infrastructure risk.
+Veritas should account for correlated infrastructure risk.
 
 Three nodes with:
 
 ```text
-Veritsa = 95
+Veritas = 95
 ```
 
 may still represent one operational dependency if they share:
@@ -1826,15 +1826,15 @@ For critical workloads, the preferred deployment may be:
 
 ```text
 NODE A
-Veritsa 94
+Veritas 94
 Provider A
 
 NODE B
-Veritsa 91
+Veritas 91
 Provider B
 
 NODE C
-Veritsa 89
+Veritas 89
 Provider C
 ```
 
@@ -1842,15 +1842,15 @@ rather than:
 
 ```text
 NODE A
-Veritsa 97
+Veritas 97
 Provider A
 
 NODE B
-Veritsa 97
+Veritas 97
 Provider A
 
 NODE C
-Veritsa 97
+Veritas 97
 Provider A
 ```
 
@@ -1863,7 +1863,7 @@ The first arrangement may provide greater resilience despite lower individual sc
 The marketplace can expose configurable thresholds.
 
 ```text
-MINIMUM VERITSA
+MINIMUM Veritas
 
 Critical:
     90
@@ -1892,7 +1892,7 @@ A provider profile can ultimately display:
 ┌─────────────────────────────────────┐
 │ NODE-4821                           │
 │                                     │
-│ VERITSA                             │
+│ Veritas                             │
 │ 92 / 100                            │
 │                                     │
 │ Confidence: HIGH                    │
@@ -1915,7 +1915,7 @@ The interface can progressively disclose more information.
 
 # 69. Reputation API
 
-Veritsa should expose reputation programmatically.
+Veritas should expose reputation programmatically.
 
 Example conceptual endpoints:
 
@@ -1942,7 +1942,7 @@ An application could define:
 ```text
 deploymentPolicy:
 
-    minimumVeritsa: 85
+    minimumVeritas: 85
 
     minimumConfidence: high
 
@@ -1964,7 +1964,7 @@ The infrastructure system can automatically enforce the policy.
 Enterprise customers may define stricter requirements:
 
 ```text
-VERITSA >= 90
+Veritas >= 90
 
 CONFIDENCE = HIGH
 
@@ -1977,13 +1977,13 @@ PROVIDER DIVERSITY >= 3
 REGIONAL DIVERSITY >= 2
 ```
 
-This allows Veritsa to become part of enterprise infrastructure governance.
+This allows Veritas to become part of enterprise infrastructure governance.
 
 ---
 
 # 72. Reputation and Automation
 
-The ultimate purpose of Veritsa is not merely displaying badges.
+The ultimate purpose of Veritas is not merely displaying badges.
 
 It is enabling automated infrastructure decisions.
 
@@ -1991,7 +1991,7 @@ It is enabling automated infrastructure decisions.
 OBSERVATIONS
       │
       ▼
-    VERITSA
+    Veritas
       │
       ▼
    POLICY
@@ -2061,7 +2061,7 @@ RETIRED
 For example:
 
 ```text
-Veritsa:
+Veritas:
     86
 
 State:
@@ -2079,7 +2079,7 @@ A node can remain visible while having restricted marketplace access.
 For example:
 
 ```text
-VERITSA: 64
+Veritas: 64
 STATE: RESTRICTED
 ```
 
@@ -2166,9 +2166,9 @@ This is significantly more meaningful than a static certification badge.
 
 ---
 
-# 79. Veritsa as a Trust Layer
+# 79. Veritas as a Trust Layer
 
-Veritsa ultimately provides a common vocabulary for infrastructure trust.
+Veritas ultimately provides a common vocabulary for infrastructure trust.
 
 Instead of each application inventing its own:
 
@@ -2182,7 +2182,7 @@ secure infrastructure
 the ecosystem can reference a shared reputation framework.
 
 ```text
-VERITSA
+Veritas
    │
    ├── Score
    ├── Confidence
@@ -2196,9 +2196,9 @@ Applications can then establish their own policies around that information.
 
 ---
 
-# 80. What Veritsa Is Not
+# 80. What Veritas Is Not
 
-Veritsa is not:
+Veritas is not:
 
 * A guarantee
 * A security certification
@@ -2217,7 +2217,7 @@ It is a **reputation intelligence layer**.
 
 # 81. Security Model
 
-Veritsa should itself be treated as security-sensitive infrastructure.
+Veritas should itself be treated as security-sensitive infrastructure.
 
 The reputation system must defend against:
 
@@ -2275,7 +2275,7 @@ Receive high-value workloads
 Exploit customer trust
 ```
 
-Veritsa must therefore treat reputation manipulation as a first-class security concern.
+Veritas must therefore treat reputation manipulation as a first-class security concern.
 
 ---
 
@@ -2286,7 +2286,7 @@ No single signal should determine reputation.
 Instead:
 
 ```text
-             VERITSA
+             Veritas
                 │
       ┌─────────┼─────────┐
       │         │         │
@@ -2308,7 +2308,7 @@ This makes coordinated manipulation significantly harder.
 
 # 84. Reputation and the Exchange
 
-The Exchange can use Veritsa for:
+The Exchange can use Veritas for:
 
 ```text
 Provider ranking
@@ -2333,7 +2333,7 @@ The mesh can use reputation information as one signal among many.
 Potential inputs include:
 
 ```text
-Veritsa
+Veritas
 Latency
 Bandwidth
 Topology
@@ -2354,7 +2354,7 @@ They can simply specify policies.
 
 ```text
 deploy({
-    minimumVeritsa: 85,
+    minimumVeritas: 85,
     region: "global",
     highAvailability: true
 })
@@ -2366,7 +2366,7 @@ The platform handles the underlying selection.
 
 # 87. Reputation as a Composable Primitive
 
-Veritsa should be designed as a primitive that can be consumed by:
+Veritas should be designed as a primitive that can be consumed by:
 
 ```text
 Marketplace
@@ -2384,7 +2384,7 @@ This makes reputation useful throughout the platform rather than restricting it 
 
 ---
 
-# 88. The Veritsa Trust Graph
+# 88. The Veritas Trust Graph
 
 In addition to individual scores, the system can model relationships between:
 
@@ -2442,16 +2442,16 @@ It is:
 
 > **"Is this node sufficiently trustworthy for this workload?"**
 
-That distinction defines the Veritsa philosophy.
+That distinction defines the Veritas philosophy.
 
 ---
 
 # 90. Final Model
 
-Veritsa can ultimately be summarized as:
+Veritas can ultimately be summarized as:
 
 ```text
-                         VERITSA
+                         Veritas
                             │
              ┌──────────────┼──────────────┐
              │              │              │
@@ -2492,7 +2492,7 @@ Veritsa can ultimately be summarized as:
 
 # 91. Conclusion
 
-Veritsa provides the reputation framework required to operate an open infrastructure marketplace at scale.
+Veritas provides the reputation framework required to operate an open infrastructure marketplace at scale.
 
 The central idea is simple:
 
@@ -2522,7 +2522,7 @@ The resulting system allows users to see not merely **where infrastructure exist
 
 It also allows software to make automated decisions based on measurable trust characteristics.
 
-The visible Veritsa score is therefore only the surface.
+The visible Veritas score is therefore only the surface.
 
 Underneath it is a deeper system of:
 
@@ -2537,7 +2537,7 @@ Dimensions
    ↓
 Confidence
    ↓
-Veritsa Score
+Veritas Score
    ↓
 Marketplace Policy
    ↓
@@ -2548,4 +2548,4 @@ The ultimate objective is not to create a single universal definition of trust.
 
 It is to provide the Autheo ecosystem with a **common, transparent, machine-readable reputation language** that developers, providers, applications, routing systems, and the marketplace can all understand.
 
-**Veritsa turns infrastructure reputation into a measurable network primitive.**
+**Veritas turns infrastructure reputation into a measurable network primitive.**
