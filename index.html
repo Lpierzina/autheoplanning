@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Project documentation"
+    >
+
+    <meta
+        name="theme-color"
+        content="#080b0a"
+    >
+
+    <title>Documentation</title>
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+
+    <!-- Markdown -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
+        defer
+    ></script>
+
+    <!-- Syntax highlighting -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/github-dark.min.css"
+    >
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/lib/highlight.min.js"
+        defer
+    ></script>
+
+    <script
+        src="app.js"
+        defer
+    ></script>
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Mobile overlay -->
+        <div
+            id="sidebar-overlay"
+            class="sidebar-overlay"
+        ></div>
+
+        <!-- Sidebar -->
+        <aside
+            id="sidebar"
+            class="sidebar"
+        >
+
+            <div class="sidebar-header">
+
+                <a
+                    href="#"
+                    class="brand"
+                    id="brand"
+                >
+                    <span class="brand-mark">◆</span>
+
+                    <span>
+                        <strong id="project-name">
+                            Documentation
+                        </strong>
+
+                        <small id="project-version">
+                            Docs
+                        </small>
+                    </span>
+                </a>
+
+                <button
+                    id="close-sidebar"
+                    class="icon-button mobile-only"
+                    aria-label="Close navigation"
+                >
+                    ×
+                </button>
+
+            </div>
+
+            <!-- Search -->
+            <div class="search-wrapper">
+
+                <div class="search-box">
+
+                    <span class="search-icon">⌕</span>
+
+                    <input
+                        id="search"
+                        type="search"
+                        placeholder="Search documentation..."
+                        autocomplete="off"
+                    >
+
+                    <kbd>/</kbd>
+
+                </div>
+
+            </div>
+
+            <!-- Navigation -->
+            <nav
+                id="navigation"
+                class="navigation"
+                aria-label="Documentation navigation"
+            >
+                <div class="loading">
+                    Loading documentation...
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+
+                <span id="page-count">
+                    0 pages
+                </span>
+
+                <a
+                    id="github-link"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GitHub ↗
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!-- Main -->
+        <main class="main">
+
+            <!-- Top bar -->
+            <header class="topbar">
+
+                <button
+                    id="open-sidebar"
+                    class="icon-button mobile-only"
+                    aria-label="Open navigation"
+                >
+                    ☰
+                </button>
+
+                <div
+                    id="breadcrumbs"
+                    class="breadcrumbs"
+                >
+                    Documentation
+                </div>
+
+                <div class="topbar-actions">
+
+                    <a
+                        id="edit-link"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="topbar-link"
+                    >
+                        Edit on GitHub
+                    </a>
+
+                </div>
+
+            </header>
+
+            <!-- Content -->
+            <div class="content-wrapper">
+
+                <article
+                    id="content"
+                    class="markdown"
+                >
+                    <div class="loading-content">
+                        <div class="spinner"></div>
+                        <p>Loading documentation...</p>
+                    </div>
+                </article>
+
+                <!-- Right-side page navigation -->
+                <aside
+                    id="toc"
+                    class="toc"
+                >
+                    <div class="toc-title">
+                        On this page
+                    </div>
+
+                    <div id="toc-links"></div>
+                </aside>
+
+            </div>
+
+            <!-- Previous / next -->
+            <footer
+                id="page-navigation"
+                class="page-navigation"
+            ></footer>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
