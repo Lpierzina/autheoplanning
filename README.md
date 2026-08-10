@@ -3,9 +3,6 @@
 ```text
 
 docs/
-
-README.md
-
 begin-here/
  │
  ├── autheodev-isnt-blockchain.md
