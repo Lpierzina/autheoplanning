@@ -1,0 +1,27 @@
+{
+  "name": "Project Documentation",
+  "version": "Documentation",
+  "github": "https://github.com/ThothDivision/AUTHEO-PLANNING",
+  "sections": [
+    {
+      "title": "Architecture",
+      "pages": [
+        { "title": "Overview", "file": "docs/architecture.md" }
+      ]
+    },
+    {
+      "title": "Marketplace",
+      "pages": [
+        { "title": "Overview", "file": "docs/marketplace/overview.md" },
+        { "title": "Reputation", "file": "docs/marketplace/reputation.md" },
+        { "title": "CRDT", "file": "docs/marketplace/crdt.md" }
+      ]
+    },
+    {
+      "title": "Tools",
+      "pages": [
+        { "title": "Firecracker", "file": "docs/firecracker.md" }
+      ]
+    }
+  ]
+}
