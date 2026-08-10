@@ -1,57 +1,44 @@
 # AUTHEO-PLANNING
 
 ```text
-.
-│
-└── toolds
-     │
-     └── net-structure
-          │
-          ├── IXPs
-          ├── POP
-          ├── mail
-          └── blog
-
-
-
 
 docs/
 
 README.md
 
 platform/
-          │
-          ├── overview.md
-          ├── architecture.md
-          ├── ecosystem.md
-          └── roadmap.md
+ │
+ ├── overview.md
+ ├── architecture.md
+ ├── ecosystem.md
+ └── roadmap.md
 
 blockchain/
-    overview.md
-    consensus.md
-    validators.md
-    smart-contracts.md
-    tokenomics.md
-    governance.md
+ ├── overview.md
+ ├── consensus.md
+ ├── validators.md
+ ├── smart-contracts.md
+ ├── tokenomics.md
+ └── governance.md
 
 marketplace/
-    overview.md
-    scheduling.md
-    compute.md
-    storage.md
-    pricing.md
-    reputation.md
-    security.md
+  ├── overview.md
+  ├── scheduling.md
+  ├── compute.md
+  ├── storage.md
+  ├── pricing.md
+  ├── reputation.md
+  └── security.md
 
 mesh/
-    overview.md
-    networking.md
-    routing.md
-    discovery.md
-    quic.md
-    crdt.md
-    edge.md
-    enterprise.md
+  ├──  overview.md
+  ├──  networking.md
+  ├──  routing.md
+  ├──  discovery.md
+  ├──  quic.md
+  ├──  crdt.md
+  ├──  edge.md
+  └──  enterprise.md
 
 developers/
     getting-started.md
@@ -74,6 +61,24 @@ enterprise/
     hybrid-cloud.md
     ai.md
     compliance.md
+
+
+
+
+
+
+
+.
+│
+└── toolds
+     │
+     └── net-structure
+          │
+          ├── IXPs
+          ├── POP
+          ├── mail
+          └── blog
+
 
 
 ```
