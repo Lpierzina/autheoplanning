@@ -1,5 +1,3 @@
-Absolutely. For the mesh documentation, I’d make `discovery.md` a **protocol-level document**, not just a list of technologies. It should define the discovery hierarchy, what each mechanism does, failure/fallback behavior, security boundaries, identity resolution, and how nodes transition from local discovery to global discovery.
-
 # Mesh Discovery
 
 ## Overview
