@@ -37,6 +37,7 @@ mesh/
   ├──  networking.md
   ├──  routing.md
   ├──  discovery.md
+  ├──  security.md
   ├──  quic.md
   ├──  crdt.md
   ├──  edge.md
