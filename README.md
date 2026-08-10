@@ -25,11 +25,11 @@ blockchain/
 
 marketplace/
   ├── overview.md
-  ├── scheduling.md
-  ├── compute.md
-  ├── storage.md
-  ├── pricing.md
+  ├── exchange.md
   ├── reputation.md
+  ├── .md
+  ├── pricing.md
+  ├── .md
   └── security.md
 
 mesh/
