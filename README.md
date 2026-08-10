@@ -6,6 +6,11 @@ docs/
 
 README.md
 
+begin-here/
+ │
+ ├── autheodev-isnt-blockchain.md
+ └── introduction.md
+
 platform/
  │
  ├── overview.md
@@ -41,26 +46,26 @@ mesh/
   └──  enterprise.md
 
 developers/
-    getting-started.md
-    deployment.md
-    sdk.md
-    cli.md
-    templates.md
-    apis.md
+  ├──  getting-started.md
+  ├──  deployment.md
+  ├──   sdk.md
+  ├──  cli.md
+  ├──  templates.md
+  └──  apis.md
 
 security/
-    overview.md
-    pqc.md
-    tls.md
-    litebox.md
-    attestation.md
-    identity.md
+ ├──   overview.md
+ ├──   pqc.md
+ ├──   tls.md
+ ├──   litebox.md
+ ├──   attestation.md
+ └──   identity.md
 
 enterprise/
-    local-hyperscaler.md
-    hybrid-cloud.md
-    ai.md
-    compliance.md
+ ├──   local-hyperscaler.md
+ ├──   hybrid-cloud.md
+ ├──   ai.md
+ └──   compliance.md
 
 
 
