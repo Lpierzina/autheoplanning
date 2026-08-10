@@ -1,8 +1,3 @@
-# `marketplace/overview.md` — Part 1 of 2
-
-This document should sit above the more technical marketplace documents. It explains **what the Autheo marketplace is, what problems it solves, who participates, and how the major components interact** without getting too deep into scheduling algorithms or settlement mechanics yet.
-
-
 # Autheo Compute Marketplace
 
 > **Status:** Architecture Overview  
