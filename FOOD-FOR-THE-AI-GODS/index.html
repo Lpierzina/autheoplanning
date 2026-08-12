@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Autheo — The Infrastructure Fabric for a Programmable Internet</title>
+  <meta name="description" content="Autheo is building an open infrastructure fabric connecting compute, storage, networks, applications, organizations, and devices across cloud, edge, enterprise, and public environments.">
+  <meta name="theme-color" content="#0a0f0d">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #070a09;
+      --surface: #0c110f;
+      --surface-2: #101613;
+      --surface-3: #151c18;
+      --border: rgba(214, 230, 221, .11);
+      --border-strong: rgba(214, 230, 221, .19);
+      --text: #f1f5f2;
+      --muted: #9daaa3;
+      --subtle: #66736c;
+      --green: #43d39c;
+      --green-2: #1ea97b;
+      --green-soft: rgba(67, 211, 156, .10);
+      --max: 1240px;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 50% -20%, rgba(67,211,156,.10), transparent 34rem),
+        var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", system-ui, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 48px), var(--max));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--green);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 16px rgba(67,211,156,.55);
+    }
+
+    h1, h2, h3, .brand, nav {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7,10,9,.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -.04em;
+    }
+
+    .brand span { color: var(--green); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: #b8c1bc;
+      font-size: .9rem;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 17px;
+      border: 1px solid var(--border-strong);
+      border-radius: 9px;
+      font-size: .86rem;
+      font-weight: 600;
+      transition: .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(67,211,156,.45);
+    }
+
+    .button.primary {
+      color: #06100b;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .button.secondary { background: rgba(255,255,255,.025); }
+
+    .hero {
+      position: relative;
+      padding: 132px 0 110px;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .32;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, black, transparent 72%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      max-width: 940px;
+      margin: 22px 0;
+      font-size: clamp(3.4rem, 7vw, 6.6rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+    }
+
+    .hero h1 em {
+      color: var(--green);
+      font-style: normal;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      color: #b5c0ba;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 800px;
+      margin-top: 76px;
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-item {
+      padding: 22px 24px 0 0;
+      border-right: 1px solid var(--border);
+    }
+
+    .meta-item + .meta-item { padding-left: 24px; }
+    .meta-item:last-child { border-right: 0; }
+
+    .meta-item strong {
+      display: block;
+      font-family: "Space Grotesk";
+      font-size: 1rem;
+    }
+
+    .meta-item span {
+      color: var(--subtle);
+      font-size: .78rem;
+    }
+
+    section { padding: 112px 0; }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 52px;
+    }
+
+    .section-head h2 {
+      margin: 16px 0;
+      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 680px;
+    }
+
+    .problem {
+      background: #080d0b;
+    }
+
+    .problem-grid,
+    .principles-grid,
+    .environment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .panel {
+      background: var(--surface);
+      padding: 30px;
+    }
+
+    .panel h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    .panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .architecture {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .layers {
+      display: grid;
+      gap: 18px;
+    }
+
+    .layer {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      min-height: 170px;
+    }
+
+    .layer-label {
+      padding: 28px;
+      border-right: 1px solid var(--border);
+      background: rgba(255,255,255,.015);
+    }
+
+    .layer-label .number {
+      display: block;
+      color: var(--green);
+      font-family: "Space Grotesk";
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      margin-bottom: 14px;
+    }
+
+    .layer-label h3 {
+      margin: 0;
+      font-size: 1.45rem;
+    }
+
+    .layer-content {
+      padding: 28px 32px;
+    }
+
+    .layer-content h4 {
+      margin: 0 0 8px;
+      font-family: "Space Grotesk";
+      font-size: 1.15rem;
+    }
+
+    .layer-content p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      max-width: 750px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: #b9c3bd;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: .75rem;
+    }
+
+    .layer.zero {
+      border-color: rgba(67,211,156,.28);
+      background: linear-gradient(90deg, rgba(67,211,156,.055), var(--surface));
+    }
+
+    .layer.one .layer-label {
+      background: rgba(255,255,255,.025);
+    }
+
+    .layer-note {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-left: 2px solid var(--green);
+      background: var(--green-soft);
+      color: #b9c8c0;
+      font-size: .9rem;
+    }
+
+    .fabric {
+      background:
+        linear-gradient(180deg, #080d0b, #0b100e);
+    }
+
+    .fabric-map {
+      position: relative;
+      min-height: 500px;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(circle at center, rgba(67,211,156,.08), transparent 22rem),
+        var(--surface);
+      overflow: hidden;
+    }
+
+    .fabric-map::before,
+    .fabric-map::after {
+      content: "";
+      position: absolute;
+      background: var(--border-strong);
+    }
+
+    .fabric-map::before {
+      left: 12%;
+      right: 12%;
+      top: 50%;
+      height: 1px;
+    }
+
+    .fabric-map::after {
+      top: 14%;
+      bottom: 14%;
+      left: 50%;
+      width: 1px;
+    }
+
+    .fabric-node {
+      position: absolute;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      padding: 14px 18px;
+      border: 1px solid var(--border-strong);
+      background: rgba(12,17,15,.95);
+      border-radius: 9px;
+      font-family: "Space Grotesk";
+      font-size: .86rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,.25);
+    }
+
+    .fabric-node.center {
+      left: 50%;
+      top: 50%;
+      padding: 24px 34px;
+      border-color: rgba(67,211,156,.45);
+      color: var(--green);
+      font-weight: 700;
+      letter-spacing: .05em;
+    }
+
+    .n1 { left: 50%; top: 14%; }
+    .n2 { left: 18%; top: 50%; }
+    .n3 { left: 82%; top: 50%; }
+    .n4 { left: 28%; top: 82%; }
+    .n5 { left: 72%; top: 82%; }
+
+    .environment-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .environment-grid .panel {
+      min-height: 170px;
+    }
+
+    .environment-grid h3 {
+      font-size: 1.05rem;
+    }
+
+    .quote {
+      padding: 112px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .quote blockquote {
+      max-width: 1000px;
+      margin: 0;
+      font-family: "Space Grotesk";
+      font-size: clamp(2.3rem, 5vw, 5rem);
+      line-height: 1.03;
+      letter-spacing: -.055em;
+    }
+
+    .quote blockquote span { color: var(--green); }
+
+    .cta {
+      padding: 120px 0;
+      text-align: center;
+    }
+
+    .cta h2 {
+      max-width: 900px;
+      margin: 16px auto 22px;
+      font-size: clamp(2.8rem, 6vw, 5.8rem);
+      line-height: .98;
+      letter-spacing: -.06em;
+    }
+
+    .cta p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .cta .hero-actions {
+      justify-content: center;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 52px 0;
+      color: var(--subtle);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 50px;
+    }
+
+    footer h4 {
+      margin: 0 0 14px;
+      color: #dbe3de;
+      font-family: "Space Grotesk";
+      font-size: .85rem;
+    }
+
+    footer a {
+      display: block;
+      margin: 8px 0;
+      font-size: .82rem;
+    }
+
+    footer a:hover { color: var(--green); }
+
+    .footer-brand {
+      color: var(--text);
+      font-family: "Space Grotesk";
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .footer-brand span { color: var(--green); }
+
+    .footer-copy {
+      max-width: 310px;
+      margin-top: 12px;
+      font-size: .8rem;
+      line-height: 1.7;
+    }
+
+    .copyright {
+      margin-top: 45px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: .72rem;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .problem-grid,
+      .principles-grid,
+      .environment-grid { grid-template-columns: 1fr 1fr; }
+      .layer { grid-template-columns: 1fr; }
+      .layer-label {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .environment-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .container { width: min(calc(100% - 32px), var(--max)); }
+      .hero { padding: 95px 0 80px; }
+      .hero h1 { font-size: 3.25rem; }
+      .hero-meta { grid-template-columns: 1fr; }
+      .meta-item, .meta-item + .meta-item {
+        padding: 17px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+      section { padding: 80px 0; }
+      .problem-grid,
+      .principles-grid,
+      .environment-grid,
+      .footer-grid { grid-template-columns: 1fr; }
+      .fabric-map { min-height: 430px; }
+      .fabric-node { font-size: .72rem; padding: 10px 12px; }
+      .fabric-node.center { padding: 18px 22px; }
+      .n1 { top: 12%; }
+      .n2 { left: 22%; }
+      .n3 { left: 78%; }
+      .n4 { left: 27%; }
+      .n5 { left: 73%; }
+      .nav-actions .secondary { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top">authe<span>o</span></a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#model">Architecture</a>
+        <a href="#fabric">Infrastructure Fabric</a>
+        <a href="#environments">Environments</a>
+        <a href="#principles">Principles</a>
+        <a href="https://docs.autheo.com/start-here/autheo-os-model">Docs</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="button secondary" href="https://www.autheo.com">Autheo.com</a>
+        <a class="button primary" href="https://www.autheo.com/join">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="eyebrow">Infrastructure for the next internet</div>
+
+        <h1>
+          A new foundation for an <em>open, distributed internet.</em>
+        </h1>
+
+        <p class="hero-copy">
+          Autheo connects compute, storage, networking, applications, organizations,
+          and devices into a coherent infrastructure fabric that can span cloud,
+          edge, enterprise, developer, and public environments.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="https://docs.autheo.com/start-here/autheo-os-model">Explore the architecture</a>
+          <a class="button secondary" href="https://www.autheo.com/join">Join Autheo</a>
+        </div>
+
+        <div class="hero-meta">
+          <div class="meta-item">
+            <strong>Open by design</strong>
+            <span>Interoperable interfaces and composable infrastructure</span>
+          </div>
+          <div class="meta-item">
+            <strong>Distributed where it matters</strong>
+            <span>Cloud, edge, enterprise and public environments</span>
+          </div>
+          <div class="meta-item">
+            <strong>Built for the long term</strong>
+            <span>Modularity, resilience, security and adaptability</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">The infrastructure problem</div>
+          <h2>Too much of the internet is built as islands.</h2>
+          <p>
+            Modern software depends on layers of providers, platforms, networks,
+            services and infrastructure. They work—but their boundaries create
+            dependency, fragmentation and operational complexity.
+          </p>
+        </div>
+
+        <div class="problem-grid">
+          <article class="panel">
+            <h3>Provider silos</h3>
+            <p>Applications become coupled to a platform's services, geography, pricing and operational assumptions.</p>
+          </article>
+          <article class="panel">
+            <h3>Fragmented infrastructure</h3>
+            <p>Compute, storage, networking and application services increasingly span multiple environments without a common fabric.</p>
+          </article>
+          <article class="panel">
+            <h3>Growing complexity</h3>
+            <p>Developers and organizations spend more effort connecting infrastructure than building the systems that depend on it.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="model" class="architecture">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">The Autheo model</div>
+          <h2>Two distinct layers. One infrastructure system.</h2>
+          <p>
+            Autheo separates the coordination layer from the blockchain execution
+            layer. Layer-0 provides the infrastructure fabric and interoperability
+            framework. Layer-1 provides sovereign blockchain execution and settlement.
+          </p>
+        </div>
+
+        <div class="layers">
+          <article class="layer zero">
+            <div class="layer-label">
+              <span class="number">LAYER 00</span>
+              <h3>Layer-0<br>Infrastructure OS</h3>
+            </div>
+            <div class="layer-content">
+              <h4>The coordination and infrastructure fabric</h4>
+              <p>
+                Layer-0 is the broader operating environment. It connects
+                infrastructure and participants across compute, storage, networking,
+                identity, messaging, developer tooling and application environments.
+                It is designed to make heterogeneous infrastructure discoverable,
+                composable and interoperable.
+              </p>
+              <div class="chips">
+                <span class="chip">Infrastructure Fabric</span>
+                <span class="chip">Identity</span>
+                <span class="chip">Compute</span>
+                <span class="chip">Storage</span>
+                <span class="chip">Networking</span>
+                <span class="chip">Messaging</span>
+                <span class="chip">Developer Tooling</span>
+                <span class="chip">AI Infrastructure</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="layer one">
+            <div class="layer-label">
+              <span class="number">LAYER 01</span>
+              <h3>Layer-1<br>Blockchain</h3>
+            </div>
+            <div class="layer-content">
+              <h4>The sovereign execution and settlement layer</h4>
+              <p>
+                Layer-1 is the blockchain network inside the larger Autheo system.
+                It provides decentralized state, transaction execution, consensus,
+                smart contracts and settlement. It can serve as the sovereign
+                coordination and economic layer for applications and networks built
+                within the broader ecosystem.
+              </p>
+              <div class="chips">
+                <span class="chip">Consensus</span>
+                <span class="chip">Transactions</span>
+                <span class="chip">On-chain State</span>
+                <span class="chip">Smart Contracts</span>
+                <span class="chip">Settlement</span>
+                <span class="chip">Interoperability</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="layer-note">
+          <strong>The distinction matters:</strong> Layer-0 is the infrastructure
+          and interoperability environment; Layer-1 is the blockchain execution
+          and settlement network operating within that environment.
+        </div>
+      </div>
+    </section>
+
+    <section id="fabric" class="fabric">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Infrastructure fabric</div>
+          <h2>From infrastructure silos to a connected fabric.</h2>
+          <p>
+            Autheo is not intended to replace every existing provider. The objective
+            is to make relationships between infrastructure, networks, applications
+            and participants more coherent.
+          </p>
+        </div>
+
+        <div class="fabric-map" aria-label="Autheo infrastructure fabric visualization">
+          <div class="fabric-node n1">Cloud</div>
+          <div class="fabric-node n2">Edge</div>
+          <div class="fabric-node n3">Enterprise</div>
+          <div class="fabric-node n4">Devices</div>
+          <div class="fabric-node n5">Networks</div>
+          <div class="fabric-node center">AUTHEO</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="environments">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">One ecosystem, many environments</div>
+          <h2>The future will not exist in one location.</h2>
+          <p>
+            Computing is becoming increasingly distributed. Autheo is designed around
+            a world where infrastructure spans many environments and organizational
+            boundaries.
+          </p>
+        </div>
+
+        <div class="environment-grid">
+          <article class="panel">
+            <h3>Cloud</h3>
+            <p>Large-scale infrastructure and globally distributed services.</p>
+          </article>
+          <article class="panel">
+            <h3>Edge</h3>
+            <p>Compute closer to users, devices, regions and sources of demand.</p>
+          </article>
+          <article class="panel">
+            <h3>Enterprise</h3>
+            <p>Private infrastructure operated inside organizations and institutions.</p>
+          </article>
+          <article class="panel">
+            <h3>Developer environments</h3>
+            <p>Infrastructure used directly by developers and application teams.</p>
+          </article>
+          <article class="panel">
+            <h3>Networks</h3>
+            <p>The connectivity layer that allows distributed environments to communicate.</p>
+          </article>
+          <article class="panel">
+            <h3>Devices</h3>
+            <p>Increasingly capable computing environments distributed throughout the physical world.</p>
+          </article>
+          <article class="panel">
+            <h3>Public infrastructure</h3>
+            <p>Resources made available to broader communities and ecosystems.</p>
+          </article>
+          <article class="panel">
+            <h3>Applications</h3>
+            <p>The software systems that turn infrastructure into useful experiences.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="principles" class="architecture">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Design principles</div>
+          <h2>Infrastructure should connect, not isolate.</h2>
+          <p>
+            Autheo's direction is guided by a small set of durable principles rather
+            than a single technology or short-term infrastructure trend.
+          </p>
+        </div>
+
+        <div class="principles-grid">
+          <article class="panel">
+            <h3>Open by design</h3>
+            <p>Interoperability, open standards, clear interfaces and composability.</p>
+          </article>
+          <article class="panel">
+            <h3>Distributed where it matters</h3>
+            <p>Use centralization where it creates efficiency and distribution where it creates resilience and participation.</p>
+          </article>
+          <article class="panel">
+            <h3>Composable</h3>
+            <p>Different networks, compute environments, storage systems and services should become parts of larger architectures.</p>
+          </article>
+          <article class="panel">
+            <h3>Resilient</h3>
+            <p>Design for outages, unavailable regions, changing providers and evolving organizations.</p>
+          </article>
+          <article class="panel">
+            <h3>Participatory</h3>
+            <p>Enable infrastructure providers, enterprises, developers, regional operators and edge environments to contribute.</p>
+          </article>
+          <article class="panel">
+            <h3>Long-term</h3>
+            <p>Prioritize modularity, security, adaptability and standards over short-lived infrastructure trends.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">For developers and organizations</div>
+          <h2>Infrastructure should disappear into the background.</h2>
+          <p>
+            Developers should be able to focus on what they are building instead of
+            constantly asking where every piece of infrastructure lives. Organizations
+            need resilience, operational independence, security, geographic reach,
+            cost control and long-term flexibility.
+          </p>
+        </div>
+
+        <div class="problem-grid">
+          <article class="panel">
+            <h3>For developers</h3>
+            <p>
+              Work with infrastructure as a unified resource while retaining the
+              ability to operate across different environments.
+            </p>
+          </article>
+          <article class="panel">
+            <h3>For organizations</h3>
+            <p>
+              Participate in a broader infrastructure ecosystem without giving up
+              control over private and operational requirements.
+            </p>
+          </article>
+          <article class="panel">
+            <h3>For infrastructure operators</h3>
+            <p>
+              Contribute specialized resources and capabilities without having to
+              build every part of the ecosystem yourself.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote">
+      <div class="container">
+        <div class="eyebrow">The bigger picture</div>
+        <blockquote>
+          What should infrastructure look like when the internet itself becomes a
+          <span>programmable, distributed ecosystem?</span>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="eyebrow">The direction</div>
+        <h2>Build infrastructure that connects rather than isolates.</h2>
+        <p>
+          Autheo is an evolving project exploring a more open, connected, resilient
+          and adaptable foundation for the infrastructure of the internet.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="https://docs.autheo.com/start-here/autheo-os-model">Read the architecture</a>
+          <a class="button secondary" href="https://www.autheo.com/join">Join the ecosystem</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">authe<span>o</span></div>
+          <p class="footer-copy">
+            A new foundation for open, distributed infrastructure—connecting the
+            systems, environments and participants that make up the modern internet.
+          </p>
+        </div>
+
+        <div>
+          <h4>Platform</h4>
+          <a href="https://www.autheo.com/what-is-autheo">What is Autheo?</a>
+          <a href="https://www.autheo.com/technology">Technology</a>
+          <a href="https://www.autheo.com/build">Build with Autheo</a>
+          <a href="https://www.autheo.com/developers">Developers</a>
+        </div>
+
+        <div>
+          <h4>Ecosystem</h4>
+          <a href="https://www.autheo.com/nodesale">Node Sale</a>
+          <a href="https://www.autheo.com/theo-token">THEO</a>
+          <a href="https://www.autheo.com/join">Join Autheo</a>
+        </div>
+
+        <div>
+          <h4>Resources</h4>
+          <a href="https://docs.autheo.com/start-here/autheo-os-model">Documentation</a>
+          <a href="https://www.autheo.com/team">Team</a>
+          <a href="https://www.autheo.com">Autheo.com</a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        © 2026 Autheo. Building the infrastructure fabric for what comes next.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
