@@ -1,11 +1,3 @@
-Yes. The strongest way to model this is **not** “we're 30% cheaper than AWS.” It is:
-
-> **What does the same workload cost today, what portion of that cost is actually infrastructure, and what happens when a marketplace can buy otherwise-idle compute at a lower clearing price?**
-
-There is a very important distinction between **Minecraft hosting**, **AWS/GCP raw compute**, and **Mesh compute**.
-
----
-
 # Distributed Compute Cost Advantage
 
 ## 1. Start With the Customer's Existing Bill
