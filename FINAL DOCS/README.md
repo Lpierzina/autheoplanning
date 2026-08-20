@@ -14,7 +14,9 @@ This folder contains the finalized, consolidated documentation for the Autheo ec
 | [L1-ARCHITECTURE.md](./L1-ARCHITECTURE.md) | Autheo Layer 1 blockchain: Cosmos SDK, PoS, $THEO, governance |
 | [MESH-COMPUTE.md](./MESH-COMPUTE.md) | Distributed compute mesh: P2P networking, execution, fluid compute |
 | [COMMODITY-MARKETPLACE.md](./COMMODITY-MARKETPLACE.md) | Compute marketplace: resource trading, scheduling, pricing, reputation |
-| [SECURITY-AND-QUANTUM-RESILIENCE.md](./SECURITY-AND-QUANTUM-RESILIENCE.md) | Zero-trust mesh security, post-quantum cryptography, confidential compute |
+| [SECURITY-AND-QUANTUM-RESILIENCE.md](./SECURITY-AND-QUANTUM-RESILIENCE.md) | Zero-trust mesh security, post-quantum cryptography, confidential compute — concise reference |
+| [SECURITY-ARCHITECTURE-DEEP-DIVE.md](./SECURITY-ARCHITECTURE-DEEP-DIVE.md) | **Full security architecture:** threat model, identity model, key lifecycle, encryption, quantum migration, attestation, supply chain, incident response, observability |
+| [ROUTING-AND-DISCOVERY.md](./ROUTING-AND-DISCOVERY.md) | **Full routing and discovery reference:** node discovery (mDNS/DHT/L1), peer selection, path routing, service discovery, failure handling, anti-eclipse/Sybil/poisoning, tradeoff guidance, end-to-end flow |
 | [AGENTIC-OS-AND-DEVELOPER-TOOLKIT.md](./AGENTIC-OS-AND-DEVELOPER-TOOLKIT.md) | Developer experience, Agentic OS, CLI/SDK, deployment tooling |
 | [IMPLEMENTATION-ROADMAP.md](./IMPLEMENTATION-ROADMAP.md) | Phased execution plan from foundation to full ecosystem |
 | [GLOSSARY.md](./GLOSSARY.md) | Canonical definitions for terms used across all documents |
@@ -36,9 +38,11 @@ This folder contains the finalized, consolidated documentation for the Autheo ec
 4. L1 Architecture — $THEO, staking, governance
 
 ### Security reviewer
-1. Security and Quantum Resilience
-2. Mesh Compute (peer identity and routing sections)
-3. L1 Architecture (validator security)
+1. Security Architecture Deep Dive — threat model, key lifecycle, attestation, supply chain, incident response
+2. Security and Quantum Resilience — concise security reference
+3. Routing and Discovery — routing security controls, anti-eclipse/Sybil/poisoning
+4. Mesh Compute (peer identity and routing sections)
+5. L1 Architecture (validator security)
 
 ### Investor / analyst
 1. White Paper
