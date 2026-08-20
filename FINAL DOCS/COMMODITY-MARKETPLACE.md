@@ -10,6 +10,20 @@ The Autheo Marketplace is the coordination layer between compute buyers and infr
 
 The marketplace is the operational bridge between the L1 (which sets economic rules) and the mesh (which executes workloads). It reads from both, writes to both, and runs as a decentralized service rather than a centralized SaaS product.
 
+### Scope and System Boundary
+
+This document covers commercial coordination: admission policy, matching, metering, billing, reputation, payment instructions, and service-level enforcement. It does not replace the routing or execution references. Once a workload is placed, the mesh owns data-plane behavior and the L1 owns final settlement.
+
+### Marketplace Control Surface
+
+| Function | Primary responsibility | Downstream dependency |
+|---|---|---|
+| Admission | Validate budget, identity, policy, and workload requirements | L1 identity and policy state |
+| Matching | Select eligible providers and regions | Mesh capacity and routing state |
+| Metering | Collect trustworthy usage and completion evidence | Mesh execution telemetry |
+| Settlement instruction | Submit claims, escrows, releases, or penalties | L1 transaction execution |
+| Reputation | Update provider standing from verifiable outcomes | L1-anchored history and marketplace evidence |
+
 ---
 
 ## 1. Market Model
@@ -232,6 +246,42 @@ The addressable market for commodity compute includes:
 - **AI inference:** GPU compute is priced at $2–$8/hour on major clouds. Mesh GPU nodes can compete at $0.03–$0.10/GPU-hour from idle hardware.
 - **Enterprise edge compute:** Large organizations with branch locations need local compute. The mesh provides a software-defined edge deployment model.
 - **Developer workloads:** Hobby projects, small teams, and startups are highly price-sensitive. Low-cost mesh compute captures this segment.
+
+---
+
+## 13. Operational Guidance
+
+### Scheduling Discipline
+
+A production marketplace should rank candidate supply using at least five classes of input: hardware fit, locality, current path quality, provider reputation, and commercial fit. Price matters, but the cheapest node is not the correct node if it violates latency, residency, or integrity requirements.
+
+### Metering and Evidence Collection
+
+Usage records should be treated as settlement evidence, not best-effort analytics. CPU time, GPU occupancy, storage consumption, egress, and completion status should be signed or otherwise attributable to a provider identity and correlated with marketplace dispatch records before settlement instructions are issued.
+
+### Service Tier Enforcement
+
+Premium tiers are only credible if the marketplace can actively enforce them. That means reserve capacity policies, drain-and-migrate procedures, faster health-check intervals, and stricter attestation or stake thresholds for providers serving high-assurance workloads.
+
+---
+
+## 14. Failure Modes and Market Safeguards
+
+### Provider Disappearance
+
+If a provider disappears after accepting work, the marketplace should freeze payment release, preserve execution evidence, and trigger retry or migration based on workload policy. Reputation impact and potential slashing should be driven by provable behavior rather than operator discretion.
+
+### Inaccurate Metering
+
+Metering disputes are inevitable in an open market. The platform should assume disagreements will occur and maintain durable dispatch records, signed usage reports, and clearly defined buyer/provider dispute windows. The L1 should settle only against evidence that survives audit.
+
+### Capacity Shock
+
+Supply can tighten rapidly during regional outages or GPU demand spikes. The marketplace should degrade by tightening admission, widening placement radius, and raising reserve thresholds instead of silently overcommitting providers.
+
+### Control-Plane Outage
+
+A marketplace outage should stop new placements before it compromises pricing, policy, or billing correctness. In-flight workloads should continue on the mesh, and post-recovery reconciliation should rebuild state from dispatch logs, provider telemetry, and L1 settlement history.
 
 ---
 

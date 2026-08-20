@@ -12,7 +12,11 @@ The core principle:
 
 > The mesh operates over an untrusted network. No node, relay, provider, or network segment is inherently trusted. Trust is established through cryptographic verification and continuously enforced through authenticated connections, authorization policies, and on-chain reputation.
 
-This document covers the full security stack: identity, transport encryption, post-quantum key exchange, workload isolation, zero-trust mesh architecture, and the quantum resilience strategy.
+This document covers the top-level security stack: identity, transport encryption, post-quantum key exchange, workload isolation, zero-trust mesh architecture, and the quantum resilience strategy. For deeper treatment of key lifecycle, authorization, attestation operations, incident response, and observability, use [SECURITY-ARCHITECTURE-DEEP-DIVE.md](./SECURITY-ARCHITECTURE-DEEP-DIVE.md) alongside this reference.
+
+### Security Scope Across the Platform
+
+Autheo security is not confined to one subsystem. The L1 secures settlement and governance, the marketplace secures admission and commercial correctness, and the mesh secures execution and traffic movement. This document summarizes the common posture across those layers so readers can understand the whole model before diving into control-by-control detail.
 
 ---
 
@@ -186,6 +190,19 @@ All security-relevant events on the mesh and L1 are logged and auditable:
 - Slashing events
 
 These records are either anchored to the L1 (immutable) or stored in append-only structured logs at the node level. Third-party auditors can verify the history of any node's behavior from on-chain records.
+
+---
+
+## 10. Security Responsibility by Layer
+
+| Layer | Primary security responsibility | Representative controls |
+|---|---|---|
+| **L1** | Preserve consensus integrity and settlement correctness | stake, slashing, validator key protection, deterministic finality |
+| **Marketplace** | Prevent bad admission, bad billing, and policy drift | identity checks, evidence-based metering, dispute handling, reputation thresholds |
+| **Mesh** | Protect workload execution and network traffic | microVM isolation, authenticated transport, routing protections, attestation |
+| **Agentic OS** | Expose secure defaults and accurate operator feedback | scoped credentials, manifest validation, layer-aware observability |
+
+This division is intentional. Security becomes easier to reason about when each layer has a primary job and hands off cleanly to the next.
 
 ---
 

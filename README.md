@@ -1,87 +1,32 @@
 # AUTHEO-PLANNING
 
-```text
+This repository contains the working architecture materials for the Autheo platform and a curated final-reference set for the current ecosystem narrative.
 
-docs/
-begin-here/
- │
- ├── autheodev-isnt-blockchain.md
- └── introduction.md
+## Canonical documentation entrypoint
 
-platform/
- │
- ├── overview.md
- ├── architecture.md
- ├── ecosystem.md
- └── roadmap.md
+Start in [FINAL DOCS/README.md](./FINAL%20DOCS/README.md).
 
-blockchain/
- ├── overview.md
- ├── consensus.md
- ├── validators.md
- ├── smart-contracts.md
- ├── tokenomics.md
- └── governance.md
+The `FINAL DOCS/` directory is the canonical, cross-linked reference set for:
+- the ecosystem white paper
+- Layer 1 architecture
+- mesh compute and routing
+- the commodity marketplace
+- security architecture
+- the developer platform and implementation roadmap
 
-marketplace/
-  ├── overview.md
-  ├── exchange.md
-  ├── reputation.md
-  ├── .md
-  ├── pricing.md
-  ├── .md
-  └── security.md
+## Repository documentation model
 
-mesh/
-  ├──  overview.md
-  ├──  networking.md
-  ├──  routing.md
-  ├──  discovery.md
-  ├──  security.md
-  ├──  quic.md
-  ├──  crdt.md
-  ├──  edge.md
-  └──  enterprise.md
+- `FINAL DOCS/` — polished consolidated references intended to read as one coherent documentation set
+- `docs/` — legacy drafts, exploratory writeups, and topic-by-topic source material retained for history and further refinement
+- `tools/` — supporting notes and reference material used to shape the architecture narrative
+- `FOOD-FOR-THE-AI-GODS/` — auxiliary research notes retained as background inputs
 
-developers/
-  ├──  getting-started.md
-  ├──  deployment.md
-  ├──   sdk.md
-  ├──  cli.md
-  ├──  templates.md
-  └──  apis.md
+## Recommended reading order
 
-security/
- ├──   overview.md
- ├──   pqc.md
- ├──   tls.md
- ├──   litebox.md
- ├──   attestation.md
- └──   identity.md
+1. [FINAL DOCS/README.md](./FINAL%20DOCS/README.md)
+2. [FINAL DOCS/AUTHEO-ECOSYSTEM-WHITE-PAPER-2026.md](./FINAL%20DOCS/AUTHEO-ECOSYSTEM-WHITE-PAPER-2026.md)
+3. The domain-specific references in `FINAL DOCS/` based on reader role
 
-enterprise/
- ├──   local-hyperscaler.md
- ├──   hybrid-cloud.md
- ├──   ai.md
- └──   compliance.md
+## Legacy material policy
 
-
-
-
-
-
-
-.
-│
-└── toolds
-     │
-     └── net-structure
-          │
-          ├── IXPs
-          ├── POP
-          ├── mail
-          └── blog
-
-
-
-```
+Legacy documents are intentionally preserved. They remain useful as source material and historical context, but `FINAL DOCS/` should be treated as the canonical narrative until the broader repository is normalized further.

@@ -64,6 +64,12 @@ The Byzantine fault-tolerant consensus engine used by the Autheo L1 (formerly Te
 
 ---
 
+## Control Plane
+
+The decision-making surface of the platform: identity checks, scheduling, policy enforcement, reputation updates, billing, governance, and settlement coordination. In Autheo, control-plane responsibilities are shared across the marketplace, the L1, and per-node coordination services; they do not carry the workload data path itself.
+
+---
+
 ## Confidential Compute
 
 Workload execution where the host operator cannot inspect the workload's memory or execution state. Implemented using AMD SEV-SNP or Intel TDX hardware features. Used for AI model protection, financial computation, and sensitive data processing.
@@ -94,9 +100,21 @@ A decentralized key-value lookup system used for address discovery in the Autheo
 
 ---
 
+## Data Plane
+
+The execution and traffic surface of the platform: workload runtime, service traffic, artifact movement, result delivery, and mesh network forwarding. The data plane is where work actually runs; it should continue operating safely even when parts of the control plane are degraded.
+
+---
+
 ## Endpoint ID
 
 A node's cryptographic identifier derived from its public key. Used to address peers in the mesh independently of their IP address. Two peers with the same endpoint ID always refer to the same node, even if the node's IP changes.
+
+---
+
+## Escrow
+
+An optional payment model in which buyer funds are reserved on the L1 before a workload begins and released only when completion evidence satisfies marketplace policy. Escrow reduces counterparty risk for providers while preserving on-chain auditability.
 
 ---
 
@@ -136,6 +154,12 @@ The Linux kernel hypervisor used as the hardware virtualization layer underneath
 
 ---
 
+## Locality
+
+The placement and routing concept that describes how near a node or service is to a user, data source, or dependent system. Locality is broader than region alone; it can mean same host, same site, same metro, same region, or global placement.
+
+---
+
 ## Mesh Hive
 
 The compute execution model for the Autheo Mesh. Inspired by Vercel's Hive build infrastructure, rebuilt for a P2P network. Organizes execution as a five-layer stack: application → execution → peer → mesh → hardware.
@@ -163,6 +187,12 @@ A machine running the Autheo node software that participates in the mesh. Nodes 
 ## Node Operator / Provider
 
 An individual or organization that operates one or more Autheo mesh nodes, advertises their capacity to the marketplace, and earns $THEO payments for completed workloads.
+
+---
+
+## Payment Claim
+
+A marketplace-submitted settlement instruction asserting that a workload completed under the required policy and metering rules. The L1 uses the claim, plus any associated escrow or slashing logic, to finalize payment movement in $THEO.
 
 ---
 
@@ -196,6 +226,12 @@ The transport protocol used for peer-to-peer connections in the Autheo Mesh (via
 
 ---
 
+## Region
+
+The user-facing placement term for a geographic execution area exposed through scheduling APIs and deployment manifests. A region may contain multiple localities, sites, or edge clusters.
+
+---
+
 ## Relay
 
 A server used as a fallback when direct peer-to-peer connectivity cannot be established. In Iroh, relay traffic is end-to-end encrypted — the relay operator sees ciphertext only. Nodes prefer direct connections and use relays only when necessary.
@@ -211,6 +247,12 @@ A score assigned to mesh nodes based on their execution history, uptime, and on-
 ## Scheduler
 
 The component in the marketplace that selects which node(s) execute a given workload. The scheduler filters by workload requirements (CPU, GPU, region, etc.), ranks candidates by price and reputation, and dispatches the workload.
+
+---
+
+## Settlement
+
+The final on-chain transfer or release of $THEO after a workload's payment claim has been accepted under marketplace and L1 rules. Settlement is distinct from metering, dispatch, or escrow creation; it is the moment economic state becomes final on the ledger.
 
 ---
 
