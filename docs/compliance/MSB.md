@@ -1,10 +1,9 @@
-Yes — the key distinction is that **“MSB” is the broader category**, while **“money transmitter” is one type of MSB**.
+key distinction is that **“MSB” is the broader category**, while **“money transmitter” is one type of MSB**.
 
 For Autheo, the practical question is not really “MSB *or* money transmitter?” It is:
 
 > **Does Autheo's actual activity make it a money transmitter? If yes, Autheo is an MSB and the federal BSA/FinCEN requirements generally follow.**
 
-Here is the clean comparison document you can send to counsel.
 
 
 # FinCEN / BSA Regulatory Classification
