@@ -2,6 +2,8 @@
 
 ## Autheo Non-Custodial Compute, Storage & Application Marketplace
 
+```text
+
 **Prepared for:** Autheo / [Wyoming Marketplace Entity]
 **Jurisdiction:** United States
 **Primary Corporate Jurisdiction:** Wyoming
