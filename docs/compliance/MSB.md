@@ -6,7 +6,7 @@ For Autheo, the practical question is not really “MSB *or* money transmitter?�
 
 Here is the clean comparison document you can send to counsel.
 
-````md
+
 # FinCEN / BSA Regulatory Classification
 ## MSB vs. Money Transmitter — Autheo Compute Marketplace
 
