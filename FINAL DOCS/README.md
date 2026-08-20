@@ -1,91 +1,90 @@
-# AUTHEO Documentation — Final Consolidated Reference
+# AUTHEO Documentation — Canonical Final Reference
 
-## What This Folder Is
+## Purpose of This Folder
 
-This folder contains the finalized, consolidated documentation for the Autheo ecosystem. Source files in `docs/` and `tools/` are preserved as working drafts. The documents here represent the canonical reference for the platform's architecture, vision, and technical design as of 2026.
+`FINAL DOCS/` is the canonical documentation set for the current Autheo platform narrative. It consolidates the strongest material from the segmented drafts in `docs/` and `tools/` into a single reference set with consistent terminology, clearer document boundaries, and an explicit reading order.
 
----
-
-## Document Map
-
-| Document | Purpose |
-|---|---|
-| [AUTHEO-ECOSYSTEM-WHITE-PAPER-2026.md](./AUTHEO-ECOSYSTEM-WHITE-PAPER-2026.md) | Canonical overview of the full ecosystem — start here |
-| [L1-ARCHITECTURE.md](./L1-ARCHITECTURE.md) | Autheo Layer 1 blockchain: Cosmos SDK, PoS, $THEO, governance |
-| [MESH-COMPUTE.md](./MESH-COMPUTE.md) | Distributed compute mesh: P2P networking, execution, fluid compute |
-| [COMMODITY-MARKETPLACE.md](./COMMODITY-MARKETPLACE.md) | Compute marketplace: resource trading, scheduling, pricing, reputation |
-| [SECURITY-AND-QUANTUM-RESILIENCE.md](./SECURITY-AND-QUANTUM-RESILIENCE.md) | Zero-trust mesh security, post-quantum cryptography, confidential compute — concise reference |
-| [SECURITY-ARCHITECTURE-DEEP-DIVE.md](./SECURITY-ARCHITECTURE-DEEP-DIVE.md) | **Full security architecture:** threat model, identity model, key lifecycle, encryption, quantum migration, attestation, supply chain, incident response, observability |
-| [ROUTING-AND-DISCOVERY.md](./ROUTING-AND-DISCOVERY.md) | **Full routing and discovery reference:** node discovery (mDNS/DHT/L1), peer selection, path routing, service discovery, failure handling, anti-eclipse/Sybil/poisoning, tradeoff guidance, end-to-end flow |
-| [AGENTIC-OS-AND-DEVELOPER-TOOLKIT.md](./AGENTIC-OS-AND-DEVELOPER-TOOLKIT.md) | Developer experience, Agentic OS, CLI/SDK, deployment tooling |
-| [IMPLEMENTATION-ROADMAP.md](./IMPLEMENTATION-ROADMAP.md) | Phased execution plan from foundation to full ecosystem |
-| [GLOSSARY.md](./GLOSSARY.md) | Canonical definitions for terms used across all documents |
+The working drafts outside this folder are intentionally preserved. They remain useful as source material, but this folder is the recommended entrypoint for strategic, technical, security, and operator review.
 
 ---
 
-## Recommended Reading Order
+## Documentation Model
 
-### First-time reader (strategic / business audience)
-1. White Paper — ecosystem vision and value proposition
-2. Commodity Marketplace — the economic layer and user-facing product
-3. Mesh Compute — where workloads actually run
-4. L1 Architecture — the trust and settlement layer
+Autheo is documented as a system of distinct but interdependent layers:
 
-### Developer or operator
-1. White Paper (overview sections)
-2. Mesh Compute — execution model, peer architecture, microVMs
-3. Developer Toolkit — how to build on the platform
-4. L1 Architecture — $THEO, staking, governance
+- **Autheo L1** defines trust, settlement, staking, and governance.
+- **Autheo Mesh** executes workloads and moves data across the peer network.
+- **Autheo Marketplace** matches demand to supply and enforces commercial policy.
+- **Agentic OS** presents the platform through developer-facing workflows, APIs, and runtime tooling.
+- **Security and routing** are cross-cutting control surfaces that shape how every layer behaves under real operating conditions.
+
+The goal of this folder is not to flatten those layers into one narrative. It is to explain how they fit together while keeping each document responsible for a clearly bounded topic.
+
+---
+
+## Canonical Reading Order
+
+### Strategic reader
+1. [AUTHEO-ECOSYSTEM-WHITE-PAPER-2026.md](./AUTHEO-ECOSYSTEM-WHITE-PAPER-2026.md)
+2. [COMMODITY-MARKETPLACE.md](./COMMODITY-MARKETPLACE.md)
+3. [MESH-COMPUTE.md](./MESH-COMPUTE.md)
+4. [L1-ARCHITECTURE.md](./L1-ARCHITECTURE.md)
+5. [IMPLEMENTATION-ROADMAP.md](./IMPLEMENTATION-ROADMAP.md)
+
+### Platform engineer or operator
+1. [AUTHEO-ECOSYSTEM-WHITE-PAPER-2026.md](./AUTHEO-ECOSYSTEM-WHITE-PAPER-2026.md)
+2. [MESH-COMPUTE.md](./MESH-COMPUTE.md)
+3. [ROUTING-AND-DISCOVERY.md](./ROUTING-AND-DISCOVERY.md)
+4. [COMMODITY-MARKETPLACE.md](./COMMODITY-MARKETPLACE.md)
+5. [L1-ARCHITECTURE.md](./L1-ARCHITECTURE.md)
+6. [AGENTIC-OS-AND-DEVELOPER-TOOLKIT.md](./AGENTIC-OS-AND-DEVELOPER-TOOLKIT.md)
 
 ### Security reviewer
-1. Security Architecture Deep Dive — threat model, key lifecycle, attestation, supply chain, incident response
-2. Security and Quantum Resilience — concise security reference
-3. Routing and Discovery — routing security controls, anti-eclipse/Sybil/poisoning
-4. Mesh Compute (peer identity and routing sections)
-5. L1 Architecture (validator security)
-
-### Investor / analyst
-1. White Paper
-2. Commodity Marketplace (economics and market model)
-3. Implementation Roadmap
+1. [SECURITY-AND-QUANTUM-RESILIENCE.md](./SECURITY-AND-QUANTUM-RESILIENCE.md)
+2. [SECURITY-ARCHITECTURE-DEEP-DIVE.md](./SECURITY-ARCHITECTURE-DEEP-DIVE.md)
+3. [ROUTING-AND-DISCOVERY.md](./ROUTING-AND-DISCOVERY.md)
+4. [MESH-COMPUTE.md](./MESH-COMPUTE.md)
+5. [L1-ARCHITECTURE.md](./L1-ARCHITECTURE.md)
 
 ---
 
-## Source Files Reviewed
+## Document Responsibilities
 
-These source documents were consolidated into the final docs above:
-
-- `docs/platform/01-overview.md`, `02-architecture.md`, `03-ecosystem.md`
-- `docs/blockchain/01-overview.md`, `02-consensus.md`
-- `tools/blockchain/layers.md`
-- `docs/mesh/01-overview.md` through `07-crdt.md`
-- `docs/mesh/secure-mesh-stack.md`
-- `docs/marketplace/01-overview.md`, `02-exchange.md`, `03-reputation.md`
-- `docs/marketplace/compute-marketplace.md`
-- `docs/why-autheo.md`
-- `docs/begin-here/introduction.md`, `autheo.dev-isnt-blockchain.md`, `compute.md`
-- `docs/fluid-compute.md`
-- `docs/hive-mesh.md`
-- `docs/connectivity-paradigm.md`
-- `docs/enterprise/enterprise-hyperscalers.md`
-- `docs/market.md`
-- `docs/vm/firecracker-microvms.md`, `hypervisors.md`
-- `docs/pkarr.md`
-- `docs/compliance/overview.md`, `fincen_MRA_draft.md`
-- `AUTHEO-ECOSYSTEM-WHITE-PAPER-2026.txt` (original root stub)
-- `tools/mesh/mesh0.1.md`, `tools/freddie.md`, `tools/gm.md`, `tools/litebox.md`
-- `tools/iroh.md`, `tools/hmr.md`, `tools/internet-structure.md`
-- `FOOD-FOR-THE-AI-GODS/INTERNET_HIRARCHY.md`, `5-layers.txt`
+| Document | Primary question answered | Deliberate boundary |
+|---|---|---|
+| [AUTHEO-ECOSYSTEM-WHITE-PAPER-2026.md](./AUTHEO-ECOSYSTEM-WHITE-PAPER-2026.md) | What is the platform, why does it exist, and how do the major layers interact? | Strategic overview; not the implementation-level reference for any single subsystem |
+| [L1-ARCHITECTURE.md](./L1-ARCHITECTURE.md) | What does the chain do, and what must remain on-chain? | Does not describe workload execution internals |
+| [MESH-COMPUTE.md](./MESH-COMPUTE.md) | How workloads execute on the peer network and how nodes behave operationally | Does not define pricing or settlement rules |
+| [ROUTING-AND-DISCOVERY.md](./ROUTING-AND-DISCOVERY.md) | How peers discover one another and how paths are selected, protected, and repaired | Focused on network behavior, not token economics |
+| [COMMODITY-MARKETPLACE.md](./COMMODITY-MARKETPLACE.md) | How capacity is listed, matched, metered, priced, and settled | Does not replace the mesh execution reference |
+| [SECURITY-AND-QUANTUM-RESILIENCE.md](./SECURITY-AND-QUANTUM-RESILIENCE.md) | What the top-level security posture is and why it is credible | Concise reference, not the exhaustive control catalog |
+| [SECURITY-ARCHITECTURE-DEEP-DIVE.md](./SECURITY-ARCHITECTURE-DEEP-DIVE.md) | How the security model works in depth across identity, keys, attestation, supply chain, and response | Deep implementation narrative for security review |
+| [AGENTIC-OS-AND-DEVELOPER-TOOLKIT.md](./AGENTIC-OS-AND-DEVELOPER-TOOLKIT.md) | How developers and operators consume the platform | Does not create a separate trust domain from mesh, marketplace, and L1 |
+| [IMPLEMENTATION-ROADMAP.md](./IMPLEMENTATION-ROADMAP.md) | In what order the platform should be delivered and de-risked | Planning view rather than architecture specification |
+| [GLOSSARY.md](./GLOSSARY.md) | What key terms mean across the corpus | Reference only |
 
 ---
 
 ## Terminology Conventions
 
-Across all documents, the following naming conventions apply:
+Across this set, the following names are canonical:
 
-- **Autheo** — the full ecosystem and organization
-- **Autheo Layer 1 / L1** — the Cosmos SDK blockchain
-- **$THEO** — the native network token
-- **Autheo Mesh** — the distributed P2P compute fabric
-- **Autheo Marketplace** — the compute resource exchange layer
-- **Agentic OS** — the developer-facing orchestration and toolkit layer
+- **Autheo** — the full platform and organization
+- **Autheo L1** — the Cosmos SDK / CometBFT trust and settlement layer
+- **Autheo Mesh** — the peer-to-peer compute and data movement fabric
+- **Autheo Marketplace** — the commercial coordination layer for supply, demand, pricing, and settlement instructions
+- **Agentic OS** — the developer-facing orchestration and runtime tooling layer
+- **Control plane** — scheduling, identity, policy, reputation, billing, and governance decisions
+- **Data plane** — workload execution, service traffic, artifact movement, and result return paths
+
+---
+
+## Source Material and Preservation Policy
+
+The final documents above were synthesized from `docs/`, `tools/`, and other background notes across the repository. Those inputs are preserved intentionally:
+
+- to keep original research and first-draft thinking available
+- to support future deeper references without destructive cleanup
+- to provide provenance for decisions captured in the canonical set
+
+Readers should prefer the final documents first and consult the draft materials only when they want additional history or lower-level raw notes.

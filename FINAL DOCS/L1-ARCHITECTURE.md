@@ -12,6 +12,16 @@ The L1 does not execute application workloads. Applications run on the mesh. The
 
 The native token is **$THEO**.
 
+### L1 Scope and Boundary
+
+The L1 is the authoritative ledger for economic and governance state. It should carry only the information that must be globally ordered, independently verifiable, and hard to tamper with. It should **not** become the execution plane for general workloads or the place where every mesh event is stored in full detail.
+
+| On-chain by default | Off-chain by default |
+|---|---|
+| staking, slashing, payments, governance, identity anchors, reputation anchors | workload logs, raw service traffic, large artifacts, transient routing state, warm-pool telemetry |
+
+That discipline keeps the chain auditable and performant while allowing the rest of the platform to evolve faster than the consensus layer.
+
 ---
 
 ## 1. Why a Custom L1
@@ -174,6 +184,41 @@ A validator node runs:
 - Sentry nodes (for DDoS protection, recommended)
 
 Validator infrastructure is separate from mesh node infrastructure. A validator operator is not required to also run mesh compute nodes, and a mesh node operator is not required to be a validator.
+
+---
+
+## 10. Operational Guidance
+
+### What Validators Must Optimize For
+
+Production validators optimize for determinism and key safety before raw throughput. The chain is the trust anchor for the rest of the ecosystem; unstable validator operations create downstream risk for settlement, governance, and reputation.
+
+Core validator disciplines include:
+
+- strict signer isolation, preferably with HSM-backed signing
+- sentry-node topology and rate-limited public ingress
+- continuous monitoring of missed blocks, peer health, disk growth, and time synchronization
+- rehearsal of upgrade and rollback procedures before coordinated network changes
+
+### What Should Reach the Chain
+
+Marketplace and mesh components should submit only the minimum durable facts the L1 must arbitrate: escrow creation, settlement, slashing evidence, stake state, parameter changes, and identity or attestation anchors. High-volume operational telemetry belongs off-chain with hashes or summaries anchored only when they materially affect trust or economics.
+
+---
+
+## 11. Failure Modes and Governance Mitigations
+
+### Validator Outage
+
+Short validator outages should reduce liveness margin but not undermine finality. Persistent downtime is a governance and slashing issue because the rest of the platform depends on predictable settlement windows.
+
+### Congestion and Backlog
+
+If settlement demand exceeds current chain capacity, the system should delay non-urgent writes before it compromises the correctness of security-critical or payment-critical transactions. Marketplace operators should design for settlement backpressure rather than assuming infinite write bandwidth.
+
+### Misconfigured Upgrades
+
+A poor protocol upgrade can damage the entire ecosystem more quickly at the L1 than in any other layer. Coordinated governance, staged rehearsal, and validator-runbook discipline are therefore part of the architecture, not merely operations hygiene.
 
 ---
 

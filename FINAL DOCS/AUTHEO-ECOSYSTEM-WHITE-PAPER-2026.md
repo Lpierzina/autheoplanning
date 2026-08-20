@@ -100,6 +100,17 @@ Payments settle on the L1 using $THEO. Provider reputation is built from on-chai
 
 From a developer's perspective, Autheo should feel like a cloud provider. The Agentic OS is the orchestration and developer-experience layer: CLI tools, SDKs, deployment configuration, monitoring dashboards, and application templates. Developers declare what they want. The platform handles scheduling across the mesh.
 
+### 3.5 Control Plane and Data Plane Boundary
+
+A useful way to understand the ecosystem is to separate decision-making systems from execution systems.
+
+| Plane | Primary systems | Responsibilities | Expected failure posture |
+|---|---|---|---|
+| **Control plane** | L1, marketplace services, developer APIs, policy engines | Identity anchoring, pricing, workload admission, billing, reputation, governance, settlement | Degrade gracefully; avoid admitting new work incorrectly; preserve auditability |
+| **Data plane** | Mesh nodes, microVMs, relays, caches, service endpoints | Execute workloads, move artifacts, serve traffic, return results, replicate state | Continue serving in-flight work wherever safe; reroute and heal around failures |
+
+This boundary matters operationally. A marketplace scheduler outage should not terminate already running workloads. A relay failure should not invalidate node identity. A temporary L1 backlog should delay settlement without corrupting execution state. Each organism has to keep doing its own job even when an adjacent organism is impaired.
+
 ---
 
 ## 4. The Three Organisms and Their Feedback Loops
@@ -115,6 +126,30 @@ The three layers are not a stack — they are interdependent systems with active
 **L1 → Marketplace:** Staking and slashing rules defined in L1 governance directly affect which providers are eligible to accept marketplace work and at what risk tier.
 
 This creates a coherent economic system: the L1 sets the rules, the marketplace enforces them operationally, and the mesh executes within them.
+
+### 4.1 Control Flow for a Typical Deployment
+
+A standard deployment traverses the platform in a predictable sequence:
+
+1. A developer or automation system submits a workload through the Agentic OS.
+2. The marketplace validates budget, policy, placement, and hardware requirements.
+3. Routing and discovery identify candidate nodes and the current network paths to them.
+4. The marketplace places the workload on one or more mesh nodes.
+5. Mesh nodes execute the workload inside isolated microVMs and return status, logs, and completion evidence.
+6. Settlement and reputation updates are anchored to the L1.
+
+This flow is intentionally similar to a hyperscaler control plane while keeping the execution surface decentralized. Readers should think of Autheo as combining cloud-style orchestration discipline with blockchain-grade auditability and a peer-to-peer data plane.
+
+### 4.2 Failure Domains and Graceful Degradation
+
+The platform is designed to degrade by function rather than fail as one monolith:
+
+- **Mesh node loss** should trigger rescheduling or retry, not a control-plane collapse.
+- **Routing path degradation** should trigger direct-path re-evaluation, relay fallback, or alternate locality selection.
+- **Marketplace component failure** should pause new placements before it corrupts billing or policy decisions.
+- **L1 congestion or partial validator impairment** should delay settlement and governance actions without invalidating already completed off-chain execution evidence.
+
+This separation is central to the Autheo thesis. The ecosystem is valuable only if its three organisms can coordinate tightly without becoming one brittle system.
 
 ---
 

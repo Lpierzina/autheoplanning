@@ -12,6 +12,14 @@ From a developer's perspective, deploying to Autheo should feel as familiar as d
 
 The Agentic OS also includes the runtime agent framework that runs on each mesh node, giving applications the ability to coordinate work across the network, respond to events, and manage distributed state without requiring developers to implement low-level P2P networking themselves.
 
+### Scope and Boundary
+
+Agentic OS is the platform-consumption layer. It packages mesh, marketplace, and L1 primitives into workflows developers and operators can use safely. It is **not** a separate trust domain and it should not re-implement marketplace settlement logic or mesh transport internals.
+
+### Developer Control Plane Role
+
+In practice, Agentic OS is how most users experience the control plane. It expresses developer intent, validates manifests, surfaces policy failures, and renders distributed execution into cloud-like workflows. That means clarity, observability, and safe defaults matter as much here as protocol design does in the lower layers.
+
 ---
 
 ## 1. Design Goal
@@ -196,6 +204,36 @@ The Agentic OS adds:
 - The agent runtime for distributed coordination
 
 It does not change the underlying security model. Each deployment still results in verified, isolated workload execution on attested nodes.
+
+---
+
+## 11. Operational Guidance
+
+### Workflow Design Expectations
+
+Developer tooling should make locality, budget, isolation level, and attestation requirements explicit rather than burying them behind “easy mode” abstractions. Hyperscaler-like ergonomics are useful only if they preserve the levers that matter in a decentralized environment.
+
+### Observability Expectations
+
+A credible developer control plane must expose at least four classes of state clearly:
+
+- deployment intent and manifest validity
+- placement and scheduling decisions
+- live execution status, logs, and resource use
+- settlement and reputation-relevant outcomes
+
+Without that separation, failures in the mesh or marketplace are difficult to diagnose from the user-facing surface.
+
+## 12. Failure Handling and User Experience
+
+When dependent systems degrade, Agentic OS should fail with precise, layer-aware messaging:
+
+- marketplace admission failure should present policy or budget causes
+- routing degradation should surface placement or path-quality implications
+- mesh execution failure should show whether the workload never started, started and failed, or was retried elsewhere
+- L1 delay should show settlement pending rather than implying workload failure
+
+This is where professional platform documentation matters: the product should teach users how the system behaves under stress rather than hiding distributed-systems reality behind vague status messages.
 
 ---
 

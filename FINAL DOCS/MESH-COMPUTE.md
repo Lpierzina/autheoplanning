@@ -15,6 +15,21 @@ Three technologies define the mesh's character:
 - **Firecracker microVMs** for hardware-isolated workload execution
 - **CRDTs** for distributed state synchronization without a central database
 
+### Scope and Boundary
+
+This document is about the execution fabric itself: node behavior, workload isolation, connectivity, distributed state, locality, and runtime operations. It does **not** define marketplace pricing policy or L1 settlement rules; those are covered in their dedicated references.
+
+### Mesh Control Plane vs. Data Plane
+
+Within the mesh, control and data responsibilities are distinct even when they run on the same physical node:
+
+| Layer | Responsibilities | Typical examples |
+|---|---|---|
+| **Node control functions** | Capability advertisement, warm-pool management, health reporting, admission checks, state sync | Peer daemon, node scheduler, attestation agent, CRDT registry client |
+| **Node data functions** | Workload execution, log streaming, artifact transfer, service traffic handling | Firecracker microVMs, runtime network interfaces, caches, result streams |
+
+That distinction is important operationally. A node may reject new work because its control loop detects degraded capacity while still safely finishing workloads that are already in flight.
+
 ---
 
 ## 1. What the Mesh Is Not
@@ -243,6 +258,65 @@ The mesh executes workloads scheduled by the marketplace. It does not make econo
 The mesh reports execution results back to the marketplace, which settles payments on the L1. Node reputation is anchored to the L1 based on these execution records.
 
 From the L1's perspective, the mesh is a set of registered nodes with on-chain identity, reputation, and staking relationship. From the marketplace's perspective, the mesh is a set of capacity providers with real-time availability data.
+
+---
+
+## 9. Operational Guidance
+
+### Node Lifecycle
+
+A production mesh node typically progresses through five states:
+
+1. **Bootstrap:** generate identity, load policy, discover peers, publish capability records
+2. **Admit:** verify local isolation prerequisites, synchronize routing and registry state, join placement pools
+3. **Execute:** accept workloads, manage warm pools, stream telemetry, enforce quotas
+4. **Drain:** stop accepting new work while allowing in-flight workloads to complete or migrate
+5. **Retire or recover:** revoke stale advertisements, rotate keys if needed, and rejoin only after health criteria are met
+
+This mirrors how disciplined cloud fleets behave. The difference is that Autheo must achieve it across independently operated hardware rather than in one provider-owned region.
+
+### Placement and Locality Guidance
+
+The mesh should prefer the narrowest viable execution scope first:
+
+- local node or local cluster when latency is critical
+- same site or metro when data gravity matters
+- same region when the workload needs capacity elasticity
+- global placement only when local and regional pools cannot satisfy policy, price, or hardware constraints
+
+This locality model reduces transit cost, improves user-perceived latency, and gives enterprises a practical “local region” pattern without requiring a centralized hyperscaler footprint.
+
+### Operational Metrics
+
+Operators should track at minimum:
+
+- admission success rate
+- warm-pool hit rate versus cold-start rate
+- microVM launch latency
+- task completion rate by workload class
+- peer connectivity success and relay fallback rate
+- per-node CPU, memory, I/O, and network saturation
+- attestation freshness and policy-compliance status
+
+---
+
+## 10. Failure Modes and Mitigations
+
+### Node Failure During Execution
+
+If a node becomes unavailable mid-execution, the system should distinguish between resumable and non-resumable workloads. Stateless jobs can be retried on a new node. Stateful jobs require checkpointing, replicated storage, or buyer-selected recovery policy. In all cases, failure evidence must be preserved for reputation and settlement decisions.
+
+### Warm Pool Exhaustion
+
+Warm pools improve latency but are finite. During sudden demand spikes, nodes can exhaust pre-warmed capacity and fall back to cold starts. Operators should treat warm-pool hit rate as a capacity-planning signal rather than an aesthetic optimization metric.
+
+### Partition and Rejoin Behavior
+
+Because the mesh spans unstable edge and commodity infrastructure, partitions are normal. CRDT-based state sync lets nodes continue making safe local progress and merge state on reconnect, but workload admission policies should become more conservative as confidence in global state declines.
+
+### Hardware Drift and Policy Non-Compliance
+
+A node whose kernel, microcode, attestation posture, or isolation baseline drifts out of policy should be drained from placement pools before it is removed from the network entirely. This preserves safety without turning every compliance event into a hard outage.
 
 ---
 
